@@ -12,8 +12,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="645.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.CustomerFormController">
+<AnchorPane fx:id="rootnode" prefHeight="645.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.CustomerFormController">
    <children>
       <Label layoutX="201.0" layoutY="14.0" text="Welcome to the Customer Registration form">
          <font>
@@ -116,8 +115,14 @@
       <Button layoutX="635.0" layoutY="583.0" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="32.0" prefWidth="73.0" text="Register" />
       <Button layoutX="543.0" layoutY="583.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="32.0" prefWidth="73.0" text="Clear" />
       <Button layoutX="622.0" layoutY="52.0" mnemonicParsing="false" onAction="#btnCustomerlistOnAction" prefHeight="32.0" prefWidth="73.0" text="Customers" />
-      <RadioButton fx:id="maleRadioBtn" layoutX="65.0" layoutY="506.0" mnemonicParsing="false" text="Male" />
-      <RadioButton fx:id="femaleRadioBtn" layoutX="120.0" layoutY="506.0" mnemonicParsing="false" text="Female" />
+      <RadioButton fx:id="maleRadioBtn" layoutX="398.0" layoutY="514.0" mnemonicParsing="false" text="Male" />
+      <RadioButton fx:id="femaleRadioBtn" layoutX="453.0" layoutY="514.0" mnemonicParsing="false" text="Female" />
       <Button layoutX="62.0" layoutY="52.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="25.0" prefWidth="73.0" text="&lt;-Back" />
+      <TextField fx:id="txtSalary" layoutX="62.0" layoutY="510.0" prefHeight="25.0" prefWidth="278.0" />
+      <Label layoutX="62.0" layoutY="491.0" text="Salary">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
