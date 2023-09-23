@@ -56,11 +56,11 @@ public class CustomerListController {
 
     private CustomerService service;
 
-    public void intialize(){
+    public void initialize(){
         service= ServiceFactory.getService(ServiceType.CUSTOMER);
 
         colNic.setCellValueFactory(new PropertyValueFactory<>("nic"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("Fstname"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("FstName"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("addressPerm"));
         colNumber.setCellValueFactory(new PropertyValueFactory<>("Cnumber"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));

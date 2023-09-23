@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CustomerTm {
     private String nic;
-    private String name;
-    private String address;
-    private String CNumber;
+    private String FstName;
+    private String addressPerm;
+    private String Cnumber;
     private String email;
     private Button btnDelete;
     private Button btnUpdate;

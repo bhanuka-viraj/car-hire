@@ -28,7 +28,7 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public List<Customer> getAll() throws Exception {
         Transaction transaction=session.beginTransaction();
-        String hql="FROM customer";
+        String hql="FROM Customer";
         Query<Customer> query=session.createQuery(hql,Customer.class);
 
         List<Customer>customerList=query.list();
