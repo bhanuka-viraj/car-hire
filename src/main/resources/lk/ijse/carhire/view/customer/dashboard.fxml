@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.DashboardController">
+   <children>
+      <Label layoutX="196.0" layoutY="80.0" opacity="0.64" prefHeight="83.0" prefWidth="298.0" text="CarHire">
+         <font>
+            <Font name="Britannic Bold" size="82.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.04265402843601896" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5138736367225647" green="0.5394737124443054" blue="0.027473196387290955" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="230.0" layoutY="26.0" text="Dashboard">
+         <font>
+            <Font name="Broadway" size="34.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

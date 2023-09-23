@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="645.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.CustomerFormController">
+   <children>
+      <Label layoutX="201.0" layoutY="14.0" text="Welcome to the Customer Registration form">
+         <font>
+            <Font name="Eras Demi ITC" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="249.0" layoutY="36.0" opacity="0.64" prefHeight="56.0" prefWidth="294.0" text="CarHire Pvt Ltd">
+         <font>
+            <Font name="Britannic Bold" size="42.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.04265402843601896" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5138736367225647" green="0.5394737124443054" blue="0.027473196387290955" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <TextField fx:id="txtFirstName" layoutX="62.0" layoutY="141.0" prefHeight="25.0" prefWidth="278.0" promptText="Ex- Bhanuka" />
+      <TextField fx:id="txtLastName" layoutX="396.0" layoutY="141.0" prefHeight="25.0" prefWidth="278.0" promptText="Ex- Perera" />
+      <Label layoutX="62.0" layoutY="122.0" text="First name">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="396.0" layoutY="122.0" text="Last name">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNic" layoutX="62.0" layoutY="192.0" prefHeight="25.0" prefWidth="278.0" promptText="Ex- 200201402145" />
+      <Label layoutX="62.0" layoutY="173.0" text="NIC/Passport NO">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dateOfBirth" layoutX="396.0" layoutY="192.0" prefHeight="25.0" prefWidth="278.0" />
+      <Label layoutX="396.0" layoutY="173.0" text="Date of birth">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtAddress" layoutX="62.0" layoutY="244.0" prefHeight="56.0" prefWidth="278.0" />
+      <Label layoutX="62.0" layoutY="225.0" text="Address (Permenent)">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtPostalAddress" layoutX="396.0" layoutY="244.0" prefHeight="56.0" prefWidth="278.0" />
+      <Label layoutX="396.0" layoutY="225.0" text="Address (Postal)">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPostalCode" layoutX="62.0" layoutY="329.0" prefHeight="25.0" prefWidth="278.0" />
+      <Label layoutX="62.0" layoutY="310.0" text="Postal coe/ZIP code">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtCity" layoutX="396.0" layoutY="329.0" prefHeight="25.0" prefWidth="278.0" />
+      <Label layoutX="398.0" layoutY="310.0" text="City">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtProvince" layoutX="62.0" layoutY="391.0" prefHeight="25.0" prefWidth="278.0" />
+      <Label layoutX="62.0" layoutY="372.0" text="Province">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtCountry" layoutX="396.0" layoutY="391.0" prefHeight="25.0" prefWidth="278.0" />
+      <Label layoutX="398.0" layoutY="372.0" text="Country(Residence)">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtCnumber" layoutX="62.0" layoutY="457.0" prefHeight="25.0" prefWidth="278.0" />
+      <Label layoutX="62.0" layoutY="438.0" text="Contact Number">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEmail" layoutX="396.0" layoutY="457.0" prefHeight="25.0" prefWidth="278.0" />
+      <Label layoutX="398.0" layoutY="438.0" text="Email">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="635.0" layoutY="583.0" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="32.0" prefWidth="73.0" text="Register" />
+      <Button layoutX="543.0" layoutY="583.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="32.0" prefWidth="73.0" text="Clear" />
+      <Button layoutX="622.0" layoutY="52.0" mnemonicParsing="false" onAction="#btnCustomerlistOnAction" prefHeight="32.0" prefWidth="73.0" text="Customers" />
+      <RadioButton fx:id="maleRadioBtn" layoutX="65.0" layoutY="506.0" mnemonicParsing="false" text="Male" />
+      <RadioButton fx:id="femaleRadioBtn" layoutX="120.0" layoutY="506.0" mnemonicParsing="false" text="Female" />
+      <Button layoutX="62.0" layoutY="52.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="25.0" prefWidth="73.0" text="&lt;-Back" />
+   </children>
+</AnchorPane>

@@ -1,4 +1,4 @@
 package lk.ijse.carhire.controller;
 
-public class MainController {
+public class DashboardController {
 }

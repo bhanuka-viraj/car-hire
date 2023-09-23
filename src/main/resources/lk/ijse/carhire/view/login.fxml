@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="rootnode" prefHeight="549.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.LoginController">
+   <children>
+      <Label layoutX="160.0" layoutY="90.0" text="Login" textFill="#fc0000">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="41.0" />
+         </font>
+      </Label>
+      <Label layoutX="134.0" layoutY="14.0" text="CarHire">
+         <font>
+            <Font name="Britannic Bold" size="48.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.04265402843601896" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5138736367225647" green="0.5394737124443054" blue="0.027473196387290955" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <TextField fx:id="txtUserName" layoutX="51.0" layoutY="211.0" prefHeight="40.0" prefWidth="332.0" promptText="Username" />
+      <TextField fx:id="txtPassword" layoutX="51.0" layoutY="275.0" prefHeight="40.0" prefWidth="332.0" promptText="Password" />
+      <Label layoutX="63.0" layoutY="163.0" text="Please use your username and password to log in">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="116.0" layoutY="455.0" text="Click ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Hyperlink layoutX="152.0" layoutY="452.0" onAction="#linkRegisterOnAction" text="Register now!">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
+      <Label layoutX="253.0" layoutY="455.0" text="to register">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="143.0" layoutY="391.0" text="Don't have an account?">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="51.0" layoutY="340.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="40.0" prefWidth="332.0" style="-fx-background-color: #0984e3;" text="Login" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
