@@ -1,4 +1,4 @@
-package lk.ijse.carhire.controller;
+package lk.ijse.carhire.controller.customer;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,16 +25,10 @@ import java.util.Optional;
 public class CustomerListController {
 
     @FXML
-    private TableColumn<CustomerTm, String> colAddress;
-
-    @FXML
-    private TableColumn<CustomerTm, Button> colDelete;
+    private TableColumn<CustomerTm, String> colCity;
 
     @FXML
     private TableColumn<CustomerTm, String> colEmail;
-
-    @FXML
-    private TableColumn<CustomerTm, String> colEmail1;
 
     @FXML
     private TableColumn<CustomerTm, String> colName;
@@ -46,10 +40,17 @@ public class CustomerListController {
     private TableColumn<CustomerTm, String> colNumber;
 
     @FXML
+    private TableColumn<CustomerTm, Button> colDelete;
+
+    @FXML
     private TableColumn<CustomerTm, Button> colUpdate;
 
     @FXML
+    private TableColumn<CustomerTm, Button> colDetails;
+
+    @FXML
     private TableView<CustomerTm> tblCustomer;
+
 
     @FXML
     private AnchorPane rootnode;
@@ -61,36 +62,42 @@ public class CustomerListController {
 
         colNic.setCellValueFactory(new PropertyValueFactory<>("nic"));
         colName.setCellValueFactory(new PropertyValueFactory<>("FstName"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<>("addressPerm"));
+        colCity.setCellValueFactory(new PropertyValueFactory<>("city"));
         colNumber.setCellValueFactory(new PropertyValueFactory<>("Cnumber"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colDelete.setCellValueFactory(new PropertyValueFactory<>("btnDelete"));
         colUpdate.setCellValueFactory(new PropertyValueFactory<>("btnUpdate"));
+        colDetails.setCellValueFactory(new PropertyValueFactory<>("btnDetails"));
 
-        getAllCustomers();
+      getAllCustomers();
     }
 
     private void getAllCustomers() {
         try {
-            List<CustomerDto>allCustomer=service.getAllCustomers();
+            List<CustomerDto>allCustomers=service.getAllCustomers();
             ObservableList  <CustomerTm>tmList= FXCollections.observableArrayList();
 
-            for (CustomerDto c : allCustomer){
+            for (CustomerDto c : allCustomers){
+
+                //System.out.println("Customer -> "+c);
 
                 Button btnDelete = new Button("Delete");
                 btnDelete.setStyle("-fx-background-color: #ff4d4d; -fx-text-fill: white;");
-
                 btnDelete.setMaxSize(95, 50);
                 btnDelete.setCursor(Cursor.HAND);
 
 
                 Button btnUpdate = new Button("Update");
                 btnUpdate.setStyle("-fx-background-color: #0984e3; -fx-text-fill: white;");
-
                 btnUpdate.setMaxSize(95, 50);
                 btnUpdate.setCursor(Cursor.HAND);
 
-                CustomerTm customerTm = new CustomerTm(c.getNic(),c.getFstname(),c.getAddressPerm(),c.getCnumber(),c.getEmail(),btnDelete,btnUpdate);
+                Button btnDetails = new Button("Details");
+                btnDetails.setStyle("-fx-background-color: #474787; -fx-text-fill: white;");
+                btnDetails.setMaxSize(95, 50);
+                btnDetails.setCursor(Cursor.HAND);
+
+                CustomerTm customerTm = new CustomerTm(c.getNic(),c.getFstname(),c.getCity(),c.getCnumber(),c.getEmail(),btnDelete,btnUpdate,btnDetails);
 
                 tmList.add(customerTm);
 
@@ -108,21 +115,87 @@ public class CustomerListController {
                             if (service.deleteCustomer(Integer.parseInt(customerTm.getNic()))) {
                                 new Alert(Alert.AlertType.CONFIRMATION, "Customer is Deleted..!").show();
                                 getAllCustomers();
-                                return;
+
                             }
                         }
 
                     } catch (Exception e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
+                            new Alert(Alert.AlertType.ERROR,e1.getMessage()).show();
                     }
 
                 });
+                updateCustomer(customerTm,btnUpdate);
+                CustDetails(customerTm,btnDetails);
             }
-
+                tblCustomer.setItems(tmList);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void CustDetails(CustomerTm customerTm, Button btnDetails) {
+        btnDetails.setOnAction((e) -> {
+
+            try {
+                CustomerDto selectedCustomer=service.getCustomerByNic(customerTm.getNic());
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/carhire/view/customer/customer_form.fxml"));
+                Parent rootnode = loader.load();
+                CustomerFormController customerFormController = loader.getController();
+
+                customerFormController.setCustomerDto(selectedCustomer);
+                customerFormController.setFields();
+                customerFormController.disableFields();
+                customerFormController.setLableHead1("Customer Details");
+                customerFormController.setLableDescription("You cannot edit or save customers from here");
+                customerFormController.hideSaveClearButtons();
+
+
+                Scene scene=new Scene(rootnode);
+
+                Stage primaryStage= (Stage) this.rootnode.getScene().getWindow();
+
+                primaryStage.setScene(scene);
+                primaryStage.setTitle("Customer Details");
+                primaryStage.centerOnScreen();
+
+
+            } catch (Exception e1) {
+                new Alert(Alert.AlertType.ERROR,e1.getMessage()).show();
+            }
+
+        });
+    }
+
+    private void updateCustomer(CustomerTm customerTm, Button btnUpdate) {
+        btnUpdate.setOnAction((e) -> {
+
+            try {
+                    CustomerDto selectedCustomer=service.getCustomerByNic(customerTm.getNic());
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/carhire/view/customer/customer_form.fxml"));
+                    Parent rootnode = loader.load();
+                    CustomerFormController customerFormController = loader.getController();
+
+                    customerFormController.setCustomerDto(selectedCustomer);
+                    customerFormController.setFields();
+                    customerFormController.setLableHead1("Update Customer");
+                    customerFormController.setLableDescription("Change the fields that you want to update and click Save button");
+
+                    Scene scene=new Scene(rootnode);
+
+                    Stage primaryStage= (Stage) this.rootnode.getScene().getWindow();
+
+                    primaryStage.setScene(scene);
+                    primaryStage.setTitle("Customer Update");
+                    primaryStage.centerOnScreen();
+
+
+            } catch (Exception e1) {
+                new Alert(Alert.AlertType.ERROR,e1.getMessage()).show();
+            }
+
+        });
     }
 
     @FXML

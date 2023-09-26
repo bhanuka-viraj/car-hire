@@ -33,7 +33,16 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List getAllCustomers() throws Exception {
+    public CustomerDto getCustomerByNic(String nic) throws Exception {
+       Customer c= dao.get(nic);
+
+       return new CustomerDto(c.getNic(),c.getFstname(),c.getLstname(),c.getDob(),c.getAddressPerm(),c.getAddressPost(),
+               c.getPostalCode(), c.getCity(), c.getCountry(), c.getProvince(), c.getCnumber(),
+               c.getEmail(),c.getSalary(),c.getGender());
+    }
+
+    @Override
+    public List<CustomerDto> getAllCustomers() throws Exception {
         List<Customer> list=dao.getAll();
         List<CustomerDto>dtoList=new ArrayList<>();
 

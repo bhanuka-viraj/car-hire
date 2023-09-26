@@ -17,7 +17,16 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public boolean save(Customer customer) throws Exception {
         Transaction transaction=session.beginTransaction();
-        session.persist(customer);
+
+        Customer c=session.get(Customer.class,customer.getNic());
+
+        if(c!=null){
+            session.merge(customer);
+        }else{
+            session.persist(customer);
+        }
+
+
 
         transaction.commit();
 
@@ -38,6 +47,18 @@ public class CustomerDaoImpl implements CustomerDao {
 
 
 
+
+    }
+
+    @Override
+    public Customer get(String nic) throws Exception {
+        Transaction transaction=session.beginTransaction();
+
+        Customer customer=session.get(Customer.class,nic);
+
+        transaction.commit();
+
+        return customer;
 
     }
 

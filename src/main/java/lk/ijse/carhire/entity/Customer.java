@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.Nullable;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -27,7 +28,7 @@ public class Customer {
     private String Lstname;
 
     @Column(nullable = false)
-    private Date dob;
+    private LocalDate dob;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(200)")
     private String addressPerm;

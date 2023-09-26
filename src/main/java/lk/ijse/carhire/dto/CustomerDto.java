@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -13,7 +14,7 @@ public class CustomerDto {
     private String nic;
     private String Fstname;
     private String Lstname;
-    private Date dob;
+    private LocalDate dob;
     private String addressPerm;
     private String addressPost;
     private String postalCode;

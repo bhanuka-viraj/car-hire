@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface CustomerService extends SuperService {
     public boolean saveCustomer(CustomerDto customerDto) throws Exception;
-    public List getAllCustomers() throws Exception;
+    public CustomerDto getCustomerByNic(String nic) throws Exception;
+    public List<CustomerDto> getAllCustomers() throws Exception;
 
     public boolean deleteCustomer(Integer nic)throws Exception;
 }

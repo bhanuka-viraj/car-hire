@@ -23,7 +23,7 @@ public class LoginController {
     @FXML
     void btnLoginOnAction(ActionEvent event) throws IOException {
 
-        Parent rootnode = FXMLLoader.load(this.getClass().getResource("/lk/ijse/carhire/view/customer/dashboard.fxml"));
+        Parent rootnode = FXMLLoader.load(this.getClass().getResource("/lk/ijse/carhire/view/customer/main_menu.fxml"));
         Scene scene=new Scene(rootnode);
 
         Stage primaryStage= (Stage) this.rootnode.getScene().getWindow();
