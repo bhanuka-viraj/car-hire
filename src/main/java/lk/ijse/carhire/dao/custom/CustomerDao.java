@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface CustomerDao extends SuperDao {
-    public boolean save(Customer customer)throws Exception;
-    public List<Customer> getAll() throws Exception;
+    public boolean save(Customer customer);
+    public List<Customer> getAll();
 
-    public Customer get(String nic) throws Exception;
+    public Customer get(String nic);
 
-    public boolean delete( Integer nic)throws Exception;
+    public boolean delete( Integer nic);
 }

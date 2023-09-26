@@ -11,53 +11,76 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerServiceImpl implements CustomerService {
-    private CustomerDao dao=DaoFactory.getDao(DaoType.CUSTOMER);
+    private CustomerDao dao = DaoFactory.getDao(DaoType.CUSTOMER);
 
     @Override
     public boolean saveCustomer(CustomerDto dto) throws Exception {
-        return dao.save(new Customer(dto.getNic(),
-                dto.getFstname(),
-                dto.getLstname(),
-                dto.getDob(),
-                dto.getAddressPerm(),
-                dto.getAddressPost(),
-                dto.getPostalCode(),
-                dto.getCity(),
-                dto.getCountry(),
-                dto.getProvince(),
-                dto.getCnumber(),
-                dto.getEmail(),
-                dto.getSalary() ,
-                dto.getGender()));
+        try {
+            return dao.save(new Customer(dto.getNic(),
+                    dto.getFstname(),
+                    dto.getLstname(),
+                    dto.getDob(),
+                    dto.getAddressPerm(),
+                    dto.getAddressPost(),
+                    dto.getPostalCode(),
+                    dto.getCity(),
+                    dto.getCountry(),
+                    dto.getProvince(),
+                    dto.getCnumber(),
+                    dto.getEmail(),
+                    dto.getSalary(),
+                    dto.getGender()));
+        } catch (Exception e) {
+            throw e;
+        }
 
     }
 
     @Override
     public CustomerDto getCustomerByNic(String nic) throws Exception {
-       Customer c= dao.get(nic);
+        try {
 
-       return new CustomerDto(c.getNic(),c.getFstname(),c.getLstname(),c.getDob(),c.getAddressPerm(),c.getAddressPost(),
-               c.getPostalCode(), c.getCity(), c.getCountry(), c.getProvince(), c.getCnumber(),
-               c.getEmail(),c.getSalary(),c.getGender());
+            Customer c = dao.get(nic);
+            return new CustomerDto(c.getNic(), c.getFstname(), c.getLstname(), c.getDob(), c.getAddressPerm(), c.getAddressPost(),
+                    c.getPostalCode(), c.getCity(), c.getCountry(), c.getProvince(), c.getCnumber(),
+                    c.getEmail(), c.getSalary(), c.getGender());
+
+        } catch (Exception e) {
+            throw e;
+        }
+
     }
 
     @Override
     public List<CustomerDto> getAllCustomers() throws Exception {
-        List<Customer> list=dao.getAll();
-        List<CustomerDto>dtoList=new ArrayList<>();
+        try {
+            List<Customer> list = dao.getAll();
+            List<CustomerDto> dtoList = new ArrayList<>();
 
-        for (Customer c:list) {
-            dtoList.add(new CustomerDto(c.getNic(),c.getFstname(),c.getLstname(),c.getDob(),c.getAddressPerm(),c.getAddressPost(),
-                    c.getPostalCode(), c.getCity(), c.getCountry(), c.getProvince(), c.getCnumber(),
-                    c.getEmail(),c.getSalary(),c.getGender()));
+            for (Customer c : list) {
+                dtoList.add(new CustomerDto(c.getNic(), c.getFstname(), c.getLstname(), c.getDob(), c.getAddressPerm(), c.getAddressPost(),
+                        c.getPostalCode(), c.getCity(), c.getCountry(), c.getProvince(), c.getCnumber(),
+                        c.getEmail(), c.getSalary(), c.getGender()));
+            }
+
+
+            return dtoList;
+
+        } catch (Exception e) {
+            throw e;
         }
 
 
-        return dtoList;
     }
 
     @Override
     public boolean deleteCustomer(Integer nic) throws Exception {
-        return dao.delete(nic);
+        try {
+            return dao.delete(nic);
+
+        } catch (Exception e) {
+            throw e;
+        }
+
     }
 }

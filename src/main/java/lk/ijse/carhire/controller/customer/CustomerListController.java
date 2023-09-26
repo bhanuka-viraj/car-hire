@@ -129,7 +129,7 @@ public class CustomerListController {
             }
                 tblCustomer.setItems(tmList);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
     }
 

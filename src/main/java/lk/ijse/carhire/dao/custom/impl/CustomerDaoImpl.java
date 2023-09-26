@@ -11,75 +11,97 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 public class CustomerDaoImpl implements CustomerDao {
-    private final SessionFactory sessionFactory=HibernateUtil.getSessionFactory();
-    private final Session session=sessionFactory.openSession();
+    private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
 
     @Override
-    public boolean save(Customer customer) throws Exception {
-        Transaction transaction=session.beginTransaction();
+    public boolean save(Customer customer) {
+        try (Session session = sessionFactory.openSession();) {
+            Transaction transaction = session.beginTransaction();
 
-        Customer c=session.get(Customer.class,customer.getNic());
+            try {
 
-        if(c!=null){
-            session.merge(customer);
-        }else{
-            session.persist(customer);
+                Customer c = session.get(Customer.class, customer.getNic());
+
+                if (c != null) {
+                    session.merge(customer);
+                } else {
+                    session.persist(customer);
+                }
+
+                transaction.commit();
+
+                return true;
+            } catch (Exception e) {
+                throw e;
+            }
         }
 
 
-
-        transaction.commit();
-
-        return true;
-
     }
 
     @Override
-    public List<Customer> getAll() throws Exception {
-        Transaction transaction=session.beginTransaction();
-        String hql="FROM Customer";
-        Query<Customer> query=session.createQuery(hql,Customer.class);
+    public List<Customer> getAll(){
+        try (Session session = sessionFactory.openSession();) {
+            Transaction transaction = session.beginTransaction();
+            try {
+                String hql = "FROM Customer";
+                Query<Customer> query = session.createQuery(hql, Customer.class);
 
-        List<Customer>customerList=query.list();
+                List<Customer> customerList = query.list();
 
-        transaction.commit();
-        return customerList;
-
-
-
-
-    }
-
-    @Override
-    public Customer get(String nic) throws Exception {
-        Transaction transaction=session.beginTransaction();
-
-        Customer customer=session.get(Customer.class,nic);
-
-        transaction.commit();
-
-        return customer;
-
-    }
-
-    @Override
-    public boolean delete(Integer nic) throws Exception {
-        Transaction transaction=session.beginTransaction();
-
-        try{
-            Customer customer=session.get(Customer.class,nic);
-
-            if(customer!=null){
-                session.remove(customer);
                 transaction.commit();
-                return true;
-            }else{
-                return false;
+                return customerList;
+            } catch (Exception e) {
+                throw e;
             }
 
-        }catch (Exception e){
-            transaction.rollback();
-            throw e;
+
         }
+
+
+    }
+
+    @Override
+    public Customer get(String nic) {
+        try (Session session = sessionFactory.openSession();) {
+            Transaction transaction = session.beginTransaction();
+            try {
+                Customer customer = session.get(Customer.class, nic);
+
+                transaction.commit();
+
+                return customer;
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+
+
+    }
+
+    @Override
+    public boolean delete(Integer nic){
+        try (Session session = sessionFactory.openSession();) {
+            Transaction transaction = session.beginTransaction();
+            try {
+                Customer customer = session.get(Customer.class, nic);
+
+                if (customer != null) {
+                    session.remove(customer);
+                    transaction.commit();
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } catch (Exception e) {
+                transaction.rollback();
+                throw e;
+            }
+        }
+
+
+
     }
 }

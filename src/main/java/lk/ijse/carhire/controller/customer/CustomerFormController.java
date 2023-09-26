@@ -156,14 +156,19 @@ public class CustomerFormController {
     @FXML
     void btnCustomerlistOnAction(ActionEvent event) throws IOException {
 
-        Parent rootnode = FXMLLoader.load(this.getClass().getResource("/lk/ijse/carhire/view/customer/customer_list.fxml"));
-        Scene scene=new Scene(rootnode);
+        try {
+            Parent rootnode = FXMLLoader.load(this.getClass().getResource("/lk/ijse/carhire/view/customer/customer_list.fxml"));
+            Scene scene=new Scene(rootnode);
 
-        Stage primaryStage= (Stage) this.rootnode.getScene().getWindow();
+            Stage primaryStage= (Stage) this.rootnode.getScene().getWindow();
 
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Customer List");
-        primaryStage.centerOnScreen();
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Customer List");
+            primaryStage.centerOnScreen();
+
+        }catch (Exception e){
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
     }
 
 
