@@ -1,4 +1,4 @@
-package lk.ijse.carhire.entity;
+package lk.ijse.carhire.entity.customer;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

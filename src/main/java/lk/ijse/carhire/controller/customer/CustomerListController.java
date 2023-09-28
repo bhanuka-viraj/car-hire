@@ -16,7 +16,7 @@ import lk.ijse.carhire.dto.CustomerDto;
 import lk.ijse.carhire.service.ServiceFactory;
 import lk.ijse.carhire.service.ServiceType;
 import lk.ijse.carhire.service.custom.CustomerService;
-import lk.ijse.carhire.tm.CustomerTm;
+import lk.ijse.carhire.tm.customer.CustomerTm;
 
 import java.io.IOException;
 import java.util.List;

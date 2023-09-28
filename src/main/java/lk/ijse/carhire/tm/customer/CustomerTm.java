@@ -1,4 +1,4 @@
-package lk.ijse.carhire.tm;
+package lk.ijse.carhire.tm.customer;
 
 import javafx.scene.control.Button;
 import lombok.AllArgsConstructor;

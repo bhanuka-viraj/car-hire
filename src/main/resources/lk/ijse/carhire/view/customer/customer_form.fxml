@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="rootnode" prefHeight="645.0" prefWidth="776.0" style="-fx-background-color: #2f3542;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.customer.CustomerFormController">
    <children>
-      <Label fx:id="lblHead1" layoutX="261.0" layoutY="8.0" text="Customer Registration">
+      <Label fx:id="lblHead1" layoutX="261.0" layoutY="8.0" text="Customer Registration" textAlignment="CENTER">
          <font>
             <Font name="Eras Demi ITC" size="24.0" />
          </font>
@@ -140,7 +140,7 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblDescription" layoutX="173.0" layoutY="108.0" text="Type the NIC/Passport number number and press Enter for update details from here" textFill="WHITE" />
+      <Label fx:id="lblDescription" layoutX="173.0" layoutY="108.0" text="Type the NIC/Passport number number and press Enter for update details from here" textAlignment="CENTER" textFill="WHITE" />
       <Label layoutX="564.0" layoutY="47.0" text="Click here to view all customers" textFill="WHITE" />
    </children>
 </AnchorPane>

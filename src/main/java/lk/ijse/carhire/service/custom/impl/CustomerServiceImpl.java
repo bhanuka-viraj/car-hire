@@ -4,7 +4,7 @@ import lk.ijse.carhire.dao.DaoFactory;
 import lk.ijse.carhire.dao.DaoType;
 import lk.ijse.carhire.dao.custom.CustomerDao;
 import lk.ijse.carhire.dto.CustomerDto;
-import lk.ijse.carhire.entity.Customer;
+import lk.ijse.carhire.entity.customer.Customer;
 import lk.ijse.carhire.service.custom.CustomerService;
 
 import java.util.ArrayList;

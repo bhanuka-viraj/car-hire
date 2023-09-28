@@ -2,7 +2,7 @@ package lk.ijse.carhire.dao.custom.impl;
 
 import lk.ijse.carhire.dao.custom.CustomerDao;
 import lk.ijse.carhire.dbHibernate.HibernateUtil;
-import lk.ijse.carhire.entity.Customer;
+import lk.ijse.carhire.entity.customer.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

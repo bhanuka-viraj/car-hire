@@ -1,6 +1,6 @@
 package lk.ijse.carhire.dbHibernate;
 
-import lk.ijse.carhire.entity.Customer;
+import lk.ijse.carhire.entity.customer.Customer;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
