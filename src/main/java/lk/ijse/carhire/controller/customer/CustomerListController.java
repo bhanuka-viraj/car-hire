@@ -97,7 +97,12 @@ public class CustomerListController {
                 btnDetails.setMaxSize(95, 50);
                 btnDetails.setCursor(Cursor.HAND);
 
-                CustomerTm customerTm = new CustomerTm(c.getNic(),c.getFstname(),c.getCity(),c.getCnumber(),c.getEmail(),btnDelete,btnUpdate,btnDetails);
+                Button btnRentDetails = new Button("Details");
+                btnDetails.setStyle("-fx-background-color: #474787; -fx-text-fill: white;");
+                btnDetails.setMaxSize(95, 50);
+                btnDetails.setCursor(Cursor.HAND);
+
+                CustomerTm customerTm = new CustomerTm(c.getNic(),c.getFstname(),c.getCity(),c.getCnumber(),c.getEmail(),btnDelete,btnUpdate,btnDetails,btnRentDetails);
 
                 tmList.add(customerTm);
 
@@ -112,7 +117,7 @@ public class CustomerListController {
                     try {
                         if (result.orElse(no) == ok) {
 
-                            if (service.deleteCustomer(Integer.parseInt(customerTm.getNic()))) {
+                            if (service.deleteCustomer(customerTm.getNic())) {
                                 new Alert(Alert.AlertType.CONFIRMATION, "Customer is Deleted..!").show();
                                 getAllCustomers();
 
@@ -125,7 +130,9 @@ public class CustomerListController {
 
                 });
                 updateCustomer(customerTm,btnUpdate);
-                CustDetails(customerTm,btnDetails);
+                custDetails(customerTm,btnDetails);
+                rentDetails(customerTm,btnRentDetails);
+
             }
                 tblCustomer.setItems(tmList);
         } catch (Exception e) {
@@ -133,7 +140,41 @@ public class CustomerListController {
         }
     }
 
-    private void CustDetails(CustomerTm customerTm, Button btnDetails) {
+    private void rentDetails(CustomerTm customerTm, Button btnRentDetails) {
+        btnRentDetails.setOnAction((e) -> {
+
+            try {
+                CustomerDto selectedCustomer=service.getCustomerByNic(customerTm.getNic());
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/carhire/view/customer/customer_form.fxml"));
+                Parent rootnode = loader.load();
+                CustomerFormController customerFormController = loader.getController();
+
+                customerFormController.setCustomerDto(selectedCustomer);
+                customerFormController.setFields();
+                customerFormController.disableFields();
+                customerFormController.setLableHead1("Customer Details");
+                customerFormController.setLableDescription("You cannot edit or save customers from here");
+                customerFormController.hideSaveClearButtons();
+
+
+                Scene scene=new Scene(rootnode);
+
+                Stage primaryStage= (Stage) this.rootnode.getScene().getWindow();
+
+                primaryStage.setScene(scene);
+                primaryStage.setTitle("Customer Details");
+                primaryStage.centerOnScreen();
+
+
+            } catch (Exception e1) {
+                new Alert(Alert.AlertType.ERROR,e1.getMessage()).show();
+            }
+
+        });
+    }
+
+    private void custDetails(CustomerTm customerTm, Button btnDetails) {
         btnDetails.setOnAction((e) -> {
 
             try {

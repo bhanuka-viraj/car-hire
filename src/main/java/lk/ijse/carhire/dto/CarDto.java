@@ -1,5 +1,6 @@
 package lk.ijse.carhire.dto;
 
+import lk.ijse.carhire.entity.car.CarCategory;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,13 +10,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CarDto {
     private String id;
-    private String name;
+    private String vehicleNumber;
+    private String make;
     private String color;
     private int seats;
     private int yom;
-    private String vehicleNumber;
+    private double pricePerDay;
     private double minDeposit;
-    private float maxKmPerDay;
+    private int maxKmPerDay;
     private String remarks;
     private String category;
 

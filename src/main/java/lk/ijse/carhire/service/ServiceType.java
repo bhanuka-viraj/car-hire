@@ -1,5 +1,8 @@
 package lk.ijse.carhire.service;
 
 public enum ServiceType {
-    CUSTOMER
+    CUSTOMER,
+    CATEGORY,
+    CAR,
+    RENT
 }

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +17,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootnode" prefHeight="645.0" prefWidth="776.0" style="-fx-background-color: #2f3542;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.customer.CustomerFormController">
+<AnchorPane fx:id="rootnode" prefHeight="645.0" prefWidth="776.0" style="-fx-background-color: #2f3542;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.customer.CustomerFormController">
    <children>
       <Label fx:id="lblHead1" layoutX="261.0" layoutY="8.0" text="Customer Registration" textAlignment="CENTER">
          <font>
@@ -23,12 +28,12 @@
                <stops>
                   <Stop>
                      <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
+                        <Color blue="1.0" green="1.0" red="1.0" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.8980392217636108" green="1.0" opacity="0.6399999856948853" />
+                        <Color green="1.0" opacity="0.6399999856948853" red="0.8980392217636108" />
                      </color>
                   </Stop>
                </stops>
@@ -44,12 +49,12 @@
                <stops>
                   <Stop>
                      <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
+                        <Color blue="1.0" green="1.0" red="1.0" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.8980392217636108" green="1.0" />
+                        <Color green="1.0" red="0.8980392217636108" />
                      </color>
                   </Stop>
                </stops>
@@ -128,7 +133,7 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Button fx:id="btnSave" layoutX="628.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="32.0" prefWidth="73.0" text="Save" />
+      <Button fx:id="btnSave" layoutX="628.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="73.0" text="Save" />
       <Button fx:id="btnClear" layoutX="536.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="32.0" prefWidth="73.0" text="Clear" />
       <Button layoutX="618.0" layoutY="64.0" mnemonicParsing="false" onAction="#btnCustomerlistOnAction" prefHeight="25.0" prefWidth="73.0" text="Customers" />
       <RadioButton fx:id="maleRadioBtn" layoutX="398.0" layoutY="541.0" mnemonicParsing="false" text="Male" textFill="WHITE" />

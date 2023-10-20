@@ -8,6 +8,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 public class CustomerDaoImpl implements CustomerDao {
@@ -16,18 +18,31 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public boolean save(Customer customer) {
-        try (Session session = sessionFactory.openSession();) {
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            try {
+                session.persist(customer);
+
+                transaction.commit();
+
+                return true;
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+
+
+    }
+    @Override
+    public boolean update(Customer customer) {
+        try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
             try {
 
                 Customer c = session.get(Customer.class, customer.getNic());
-
-                if (c != null) {
-                    session.merge(customer);
-                } else {
-                    session.persist(customer);
-                }
+                session.merge(customer);
 
                 transaction.commit();
 
@@ -81,7 +96,7 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public boolean delete(Integer nic){
+    public boolean delete(String nic){
         try (Session session = sessionFactory.openSession();) {
             Transaction transaction = session.beginTransaction();
             try {
@@ -104,4 +119,22 @@ public class CustomerDaoImpl implements CustomerDao {
 
 
     }
+
+    @Override
+    public LocalDate registrationDate(String nic) {
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            try {
+                Customer customer=get(nic);
+
+                transaction.commit();
+
+                return customer.getCreateDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+    }
+
 }

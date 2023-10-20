@@ -1,5 +1,8 @@
 package lk.ijse.carhire.dbHibernate;
 
+import lk.ijse.carhire.entity.car.Car;
+import lk.ijse.carhire.entity.car.CarCategory;
+import lk.ijse.carhire.entity.car.Rent;
 import lk.ijse.carhire.entity.customer.Customer;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -18,6 +21,9 @@ public class HibernateUtil {
 
         Metadata metadata = new MetadataSources(standardRegistry)
                 .addAnnotatedClass(Customer.class)
+                .addAnnotatedClass(CarCategory.class)
+                .addAnnotatedClass(Rent.class)
+                .addAnnotatedClass(Car.class)
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();

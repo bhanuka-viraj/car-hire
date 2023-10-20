@@ -4,9 +4,12 @@ import lk.ijse.carhire.dao.DaoFactory;
 import lk.ijse.carhire.dao.DaoType;
 import lk.ijse.carhire.dao.custom.CustomerDao;
 import lk.ijse.carhire.dto.CustomerDto;
+import lk.ijse.carhire.dto.RentDto;
+import lk.ijse.carhire.entity.car.Rent;
 import lk.ijse.carhire.entity.customer.Customer;
 import lk.ijse.carhire.service.custom.CustomerService;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,24 +19,57 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public boolean saveCustomer(CustomerDto dto) throws Exception {
         try {
-            return dao.save(new Customer(dto.getNic(),
-                    dto.getFstname(),
-                    dto.getLstname(),
-                    dto.getDob(),
-                    dto.getAddressPerm(),
-                    dto.getAddressPost(),
-                    dto.getPostalCode(),
-                    dto.getCity(),
-                    dto.getCountry(),
-                    dto.getProvince(),
-                    dto.getCnumber(),
-                    dto.getEmail(),
-                    dto.getSalary(),
-                    dto.getGender()));
+            Customer existingCustomer=dao.get(dto.getNic());
+
+            if(existingCustomer==null){
+                Customer customer = new Customer();
+                customer.setNic(dto.getNic());
+                customer.setFstname(dto.getFstname());
+                customer.setLstname(dto.getLstname());
+                customer.setRents(rents());
+                customer.setDob(dto.getDob());
+                customer.setAddressPerm(dto.getAddressPerm());
+                customer.setAddressPost(dto.getAddressPost());
+                customer.setPostalCode(dto.getPostalCode());
+                customer.setCity(dto.getCity());
+                customer.setCountry(dto.getCountry());
+                customer.setProvince(dto.getProvince());
+                customer.setCnumber(dto.getCnumber());
+                customer.setEmail(dto.getEmail());
+                customer.setSalary(dto.getSalary());
+                customer.setGender(dto.getGender());
+
+                return dao.save(customer);
+            }else {
+                // Update an existing customer
+                existingCustomer.setNic(dto.getNic());
+                existingCustomer.setFstname(dto.getFstname());
+                existingCustomer.setLstname(dto.getLstname());
+                existingCustomer.setRents(rents()); // You may need to handle updates to the rent list
+                existingCustomer.setDob(dto.getDob());
+                existingCustomer.setAddressPerm(dto.getAddressPerm());
+                existingCustomer.setAddressPost(dto.getAddressPost());
+                existingCustomer.setPostalCode(dto.getPostalCode());
+                existingCustomer.setCity(dto.getCity());
+                existingCustomer.setCountry(dto.getCountry());
+                existingCustomer.setProvince(dto.getProvince());
+                existingCustomer.setCnumber(dto.getCnumber());
+                existingCustomer.setEmail(dto.getEmail());
+                existingCustomer.setSalary(dto.getSalary());
+                existingCustomer.setGender(dto.getGender());
+
+                return dao.update(existingCustomer);
+
+            }
+
         } catch (Exception e) {
             throw e;
         }
 
+    }
+
+    public List<Rent>rents(){
+        return null;
     }
 
     @Override
@@ -74,7 +110,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public boolean deleteCustomer(Integer nic) throws Exception {
+    public boolean deleteCustomer(String nic) throws Exception {
         try {
             return dao.delete(nic);
 
@@ -82,5 +118,14 @@ public class CustomerServiceImpl implements CustomerService {
             throw e;
         }
 
+    }
+
+    @Override
+    public LocalDate registrationDate(String nic) throws Exception {
+        try{
+            return dao.registrationDate(nic);
+        }catch (Exception e){
+            throw e;
+        }
     }
 }

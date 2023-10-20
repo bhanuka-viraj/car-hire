@@ -22,6 +22,8 @@ import java.util.Date;
 public class CustomerFormController {
 
     @FXML
+    private AnchorPane rootnode;
+    @FXML
     private Button btnClear;
 
     @FXML
@@ -78,9 +80,6 @@ public class CustomerFormController {
     @FXML
     private TextField txtSalary;
 
-    @FXML
-    private AnchorPane rootnode;
-
     private ToggleGroup genderToggleGroup=new ToggleGroup();
 
     private CustomerService service= ServiceFactory.getService(ServiceType.CUSTOMER);
@@ -89,6 +88,18 @@ public class CustomerFormController {
 
     public CustomerFormController(){
         customerDto=new CustomerDto();
+    }
+
+    public void initialize(){
+        try {
+            maleRadioBtn.setToggleGroup(genderToggleGroup);
+            femaleRadioBtn.setToggleGroup(genderToggleGroup);
+
+        }catch (Exception e){
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
+
+
     }
 
     public void setLableHead1(String text){
@@ -112,17 +123,7 @@ public class CustomerFormController {
         btnClear.setVisible(false);
         btnSave.setVisible(false);
     }
-    public void initialize(){
-        try {
-            maleRadioBtn.setToggleGroup(genderToggleGroup);
-            femaleRadioBtn.setToggleGroup(genderToggleGroup);
 
-        }catch (Exception e){
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-        }
-
-
-    }
 
     public CustomerDto getcustomerDto(){
         return customerDto;
@@ -141,13 +142,13 @@ public class CustomerFormController {
 
     @FXML
     void btnMainMenuOnAction(ActionEvent event) throws IOException {
-        Parent rootnode = FXMLLoader.load(this.getClass().getResource("/lk/ijse/carhire/view/customer/main_menu.fxml"));
+        Parent rootnode = FXMLLoader.load(this.getClass().getResource("/lk/ijse/carhire/view/dashboard.fxml"));
         Scene scene=new Scene(rootnode);
 
         Stage primaryStage= (Stage) this.rootnode.getScene().getWindow();
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Main menu");
+        primaryStage.setTitle("Car Hire |  Dashboard");
         primaryStage.centerOnScreen();
 
     }
@@ -173,7 +174,7 @@ public class CustomerFormController {
 
 
     @FXML
-    void btnRegisterOnAction(ActionEvent event){
+    void btnSaveOnAction(ActionEvent event){
 
 
         try {
@@ -202,10 +203,12 @@ public class CustomerFormController {
             if (isSaved){
                 clearFields();
                 new Alert(Alert.AlertType.CONFIRMATION,"Customer saved successfully !").show();
+            }else {
+                new Alert(Alert.AlertType.WARNING,"Please fill out the fields with correct information").show();
             }
 
         }catch (Exception e){
-            new Alert(Alert.AlertType.WARNING,"Please fill out the fields with correct information").show();
+            new Alert(Alert.AlertType.WARNING,"Please fill out the fields with correct information | "+e.getMessage()).show();
         }
 
 

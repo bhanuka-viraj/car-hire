@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -11,65 +17,33 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.car.AvailableCarsController">
+<AnchorPane prefHeight="463.0" prefWidth="734.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.car.AvailableCarsController">
    <children>
-      <ImageView fitHeight="642.0" fitWidth="898.0" layoutX="-9.0" layoutY="-2.0" opacity="0.94">
+      <ImageView fitHeight="473.0" fitWidth="734.0" layoutY="-7.0">
          <image>
-            <Image url="@images/categoryback.jpeg" />
+            <Image url="@../images/background_2.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="267.0" layoutY="48.0" text="CarHire Pvt Ltd">
-         <font>
-            <Font name="Britannic Bold" size="55.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0" startY="0.44075829383886256">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.7145549058914185" green="0.7368420958518982" blue="0.06822612136602402" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Label>
-      <Label fx:id="lblHead1" layoutX="355.0" layoutY="5.0" text="Available Cars" textAlignment="CENTER">
-         <font>
-            <Font name="Eras Demi ITC" size="31.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.41706161137440756">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.8980392217636108" green="1.0" opacity="0.6399999856948853" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Label>
-      <TableView layoutX="35.0" layoutY="233.0" prefHeight="383.0" prefWidth="829.0">
+      <TableView fx:id="tblCars" layoutX="30.0" layoutY="139.0" opacity="0.75" prefHeight="313.0" prefWidth="675.0">
          <columns>
-            <TableColumn prefWidth="119.0" text="Make" />
-            <TableColumn prefWidth="149.0" text="Category" />
-            <TableColumn prefWidth="94.0" text="Availability" />
-            <TableColumn prefWidth="138.0" text="Rent per day" />
-            <TableColumn prefWidth="190.0" text="Rent per month" />
-            <TableColumn prefWidth="139.66668701171875" text="Remarks" />
+            <TableColumn fx:id="colMake" editable="false" prefWidth="81.0" text="Make" />
+            <TableColumn fx:id="colCategory" editable="false" prefWidth="95.0" text="Category" />
+            <TableColumn fx:id="colAvailability" editable="false" prefWidth="106.0" text="Availability" />
+            <TableColumn fx:id="colRentPerDay" editable="false" prefWidth="105.0" text="Rent per day" />
+            <TableColumn fx:id="colRent" editable="false" prefWidth="91.0" text="Rent" />
+            <TableColumn fx:id="colDelete" editable="false" prefWidth="91.0" text="Delete" />
+            <TableColumn fx:id="colRemarks" editable="false" prefWidth="105.0" text="Remarks" />
          </columns>
       </TableView>
+      <Label layoutX="256.0" layoutY="6.0" prefHeight="44.0" prefWidth="223.0" text="CarHire Pvt Ltd" textFill="#aaa69d">
+         <font>
+            <Font name="Britannic Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="292.0" layoutY="50.0" prefHeight="28.0" prefWidth="152.0" text="Available cars" textFill="#aaa69d">
+         <font>
+            <Font name="Britannic Bold" size="23.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

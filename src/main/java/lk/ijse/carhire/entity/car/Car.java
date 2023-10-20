@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.Date;
 
 @Entity
 @Data
@@ -13,8 +17,11 @@ public class Car {
     @Id
     private String id;
 
+    @Column(nullable = false, unique = true)
+    private String vehicleNumber;
+
     @Column(nullable = false)
-    private String brand;
+    private String make;
 
     @Column(nullable = false)
     private String color;
@@ -26,17 +33,29 @@ public class Car {
     private int yom;
 
     @Column(nullable = false)
-    private int qoh;
+    private double pricePerDay;
 
-    @Column(nullable = false)
-    private String vehicleNumber;
+    @Column(nullable = true)
+    private Double minDeposit;
 
-    private double minDeposit;
-
-    private float maxKmPerDay;
+    @Column(nullable = true)
+    private int maxKmPerDay;
 
     @Lob
     private String remarks;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id", nullable = false)
+    private CarCategory category;
+
+    @CreationTimestamp
+    @Column(name = "create_date", nullable = false)
+    private Date createDate;
+
+    @UpdateTimestamp
+    @Column(name = "update_date", nullable = false)
+    private Date updateDate;
+
 
 
 

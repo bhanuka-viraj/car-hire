@@ -1,22 +1,23 @@
 package lk.ijse.carhire.entity.customer;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lk.ijse.carhire.entity.car.Rent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "Customer")
+@Entity
 public class Customer {
     @Id
     private String nic;
@@ -27,13 +28,16 @@ public class Customer {
     @Column(nullable = false)
     private String Lstname;
 
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    private List<Rent> rents;
+
     @Column(nullable = false)
     private LocalDate dob;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(200)")
+    @Column(nullable = false, length =200 )
     private String addressPerm;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(200)")
+    @Column(nullable = false, length =200)
     private String addressPost;
 
     @Column(nullable = false)
@@ -59,4 +63,12 @@ public class Customer {
 
     @Column(nullable = false)
     private String gender;
+
+    @CreationTimestamp
+    @Column(name = "create_date", nullable = false)
+    private Date createDate;
+
+    @UpdateTimestamp
+    @Column(name = "update_date", nullable = false)
+    private Date updateDate;
 }

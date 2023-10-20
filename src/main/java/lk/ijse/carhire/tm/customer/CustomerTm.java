@@ -17,4 +17,5 @@ public class CustomerTm {
     private Button btnDelete;
     private Button btnUpdate;
     private Button btnDetails;
+    private Button rentDetails;
 }

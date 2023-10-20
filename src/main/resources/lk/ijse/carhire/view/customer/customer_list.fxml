@@ -13,16 +13,16 @@
 <AnchorPane fx:id="rootnode" prefHeight="606.0" prefWidth="1110.0" style="-fx-background-color: #2f3542;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.customer.CustomerListController">
    <children>
       <TableView fx:id="tblCustomer" layoutX="18.0" layoutY="159.0" prefHeight="385.0" prefWidth="1072.0">
-        <columns>
-          <TableColumn fx:id="colNic" prefWidth="145.0" text="NIC" />
-          <TableColumn fx:id="colName" prefWidth="114.0" text="Name" />
+         <columns>
+            <TableColumn fx:id="colNic" prefWidth="145.0" text="NIC" />
+            <TableColumn fx:id="colName" prefWidth="114.0" text="Name" />
             <TableColumn fx:id="colCity" prefWidth="120.0" text="City" />
             <TableColumn fx:id="colNumber" prefWidth="160.0" text="Contact Number" />
             <TableColumn fx:id="colEmail" prefWidth="254.0" text="Email" />
             <TableColumn fx:id="colUpdate" prefWidth="93.0" text="Update" />
             <TableColumn fx:id="colDelete" prefWidth="93.0" text="Delete" />
             <TableColumn fx:id="colDetails" prefWidth="92.0" text="Details" />
-        </columns>
+         </columns>
       </TableView>
       <Button layoutX="33.0" layoutY="30.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="25.0" prefWidth="73.0" text="&lt;-Back" />
       <Label layoutX="408.0" layoutY="50.0" opacity="0.64" prefHeight="56.0" prefWidth="294.0" text="CarHire Pvt Ltd">
