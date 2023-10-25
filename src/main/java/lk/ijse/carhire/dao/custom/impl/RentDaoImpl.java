@@ -46,7 +46,7 @@ public class RentDaoImpl implements RentDao {
     }
 
     @Override
-    public Rent getRent(Long id) {
+    public Rent getRent(String id) {
         try(Session session = sessionFactory.openSession()){
             Transaction transaction=session.beginTransaction();
 

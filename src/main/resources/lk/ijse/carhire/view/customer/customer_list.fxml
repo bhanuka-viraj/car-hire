@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -10,63 +15,18 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootnode" prefHeight="606.0" prefWidth="1110.0" style="-fx-background-color: #2f3542;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.customer.CustomerListController">
+<AnchorPane fx:id="rootnode" prefHeight="345.0" prefWidth="706.0" style="-fx-background-color: #2f3542;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.customer.CustomerListController">
    <children>
-      <TableView fx:id="tblCustomer" layoutX="18.0" layoutY="159.0" prefHeight="385.0" prefWidth="1072.0">
+      <TableView fx:id="tblCustomer" prefHeight="345.0" prefWidth="705.0">
          <columns>
-            <TableColumn fx:id="colNic" prefWidth="145.0" text="NIC" />
+            <TableColumn fx:id="colNic" prefWidth="111.66665649414062" text="NIC" />
             <TableColumn fx:id="colName" prefWidth="114.0" text="Name" />
-            <TableColumn fx:id="colCity" prefWidth="120.0" text="City" />
-            <TableColumn fx:id="colNumber" prefWidth="160.0" text="Contact Number" />
-            <TableColumn fx:id="colEmail" prefWidth="254.0" text="Email" />
-            <TableColumn fx:id="colUpdate" prefWidth="93.0" text="Update" />
-            <TableColumn fx:id="colDelete" prefWidth="93.0" text="Delete" />
-            <TableColumn fx:id="colDetails" prefWidth="92.0" text="Details" />
+            <TableColumn fx:id="colNumber" prefWidth="144.0" text="Contact Number" />
+            <TableColumn fx:id="colUpdate" prefWidth="97.0" text="Update" />
+            <TableColumn fx:id="colDelete" prefWidth="97.0" text="Delete" />
+            <TableColumn fx:id="colDetails" prefWidth="75.0" text="Details" />
+            <TableColumn fx:id="colRents" prefWidth="65.0" text="Rents" />
          </columns>
       </TableView>
-      <Button layoutX="33.0" layoutY="30.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="25.0" prefWidth="73.0" text="&lt;-Back" />
-      <Label layoutX="408.0" layoutY="50.0" opacity="0.64" prefHeight="56.0" prefWidth="294.0" text="CarHire Pvt Ltd">
-         <font>
-            <Font name="Britannic Bold" size="42.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="0.04265402843601896" endY="1.0" startX="0.02843601895734597">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.8980392217636108" green="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Label>
-      <Label fx:id="lblHead1" layoutX="468.0" layoutY="11.0" prefHeight="39.0" prefWidth="173.0" text="Customer List">
-         <font>
-            <Font name="Eras Demi ITC" size="26.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.41706161137440756">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.8980392217636108" green="1.0" opacity="0.6399999856948853" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Label>
-      <Label fx:id="lblDescription" layoutX="381.0" layoutY="120.0" text="If you need to see more delails of a customer, click Details button" textFill="WHITE" />
    </children>
 </AnchorPane>

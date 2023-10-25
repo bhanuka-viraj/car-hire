@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Launcher extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Parent rootnode = FXMLLoader.load(this.getClass().getResource("view/rent/rent_car.fxml"));
+        Parent rootnode = FXMLLoader.load(this.getClass().getResource("view/dashboard.fxml"));
         Image icon = new Image(getClass().getResourceAsStream("view/images/background_2.jpg"));
 
         Scene scene = new Scene(rootnode);

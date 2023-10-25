@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="345.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.rent.RentListController">
+   <children>
+      <TableView fx:id="tblCars" prefHeight="345.0" prefWidth="705.0">
+         <columns>
+            <TableColumn fx:id="colId" editable="false" prefWidth="52.0" text="Rent id" />
+            <TableColumn fx:id="colCustName" editable="false" prefWidth="140.0" text="Customer name" />
+            <TableColumn fx:id="colRentedCar" editable="false" prefWidth="112.0" text="Rented car" />
+            <TableColumn fx:id="colReturnDate" editable="false" prefWidth="96.0" text="Returning date" />
+            <TableColumn fx:id="colBalanceToPaid" editable="false" prefWidth="113.0" text="Balance to be paid" />
+            <TableColumn fx:id="colDetails" editable="false" prefWidth="101.0" text="Details" />
+            <TableColumn fx:id="colManage" editable="false" minWidth="0.0" prefWidth="90.0" text="Manage" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

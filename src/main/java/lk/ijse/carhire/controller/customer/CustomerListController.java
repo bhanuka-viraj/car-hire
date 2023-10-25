@@ -49,6 +49,9 @@ public class CustomerListController {
     private TableColumn<CustomerTm, Button> colDetails;
 
     @FXML
+    private TableColumn<CustomerTm, Button> colRents;
+
+    @FXML
     private TableView<CustomerTm> tblCustomer;
 
 
@@ -62,12 +65,11 @@ public class CustomerListController {
 
         colNic.setCellValueFactory(new PropertyValueFactory<>("nic"));
         colName.setCellValueFactory(new PropertyValueFactory<>("FstName"));
-        colCity.setCellValueFactory(new PropertyValueFactory<>("city"));
         colNumber.setCellValueFactory(new PropertyValueFactory<>("Cnumber"));
-        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colDelete.setCellValueFactory(new PropertyValueFactory<>("btnDelete"));
         colUpdate.setCellValueFactory(new PropertyValueFactory<>("btnUpdate"));
         colDetails.setCellValueFactory(new PropertyValueFactory<>("btnDetails"));
+        colRents.setCellValueFactory(new PropertyValueFactory<>("btnRents"));
 
       getAllCustomers();
     }
@@ -97,12 +99,12 @@ public class CustomerListController {
                 btnDetails.setMaxSize(95, 50);
                 btnDetails.setCursor(Cursor.HAND);
 
-                Button btnRentDetails = new Button("Details");
+                Button btnRents = new Button("Rents");
                 btnDetails.setStyle("-fx-background-color: #474787; -fx-text-fill: white;");
                 btnDetails.setMaxSize(95, 50);
                 btnDetails.setCursor(Cursor.HAND);
 
-                CustomerTm customerTm = new CustomerTm(c.getNic(),c.getFstname(),c.getCity(),c.getCnumber(),c.getEmail(),btnDelete,btnUpdate,btnDetails,btnRentDetails);
+                CustomerTm customerTm = new CustomerTm(c.getNic(),c.getFstname(),c.getCnumber(),btnDelete,btnUpdate,btnDetails,btnRents);
 
                 tmList.add(customerTm);
 
@@ -131,7 +133,7 @@ public class CustomerListController {
                 });
                 updateCustomer(customerTm,btnUpdate);
                 custDetails(customerTm,btnDetails);
-                rentDetails(customerTm,btnRentDetails);
+                rentDetails(customerTm,btnRents);
 
             }
                 tblCustomer.setItems(tmList);
@@ -160,11 +162,11 @@ public class CustomerListController {
 
                 Scene scene=new Scene(rootnode);
 
-                Stage primaryStage= (Stage) this.rootnode.getScene().getWindow();
+                Stage stage= new Stage();
 
-                primaryStage.setScene(scene);
-                primaryStage.setTitle("Customer Details");
-                primaryStage.centerOnScreen();
+                stage.setScene(scene);
+                stage.setTitle("Customer Details");
+                stage.centerOnScreen();
 
 
             } catch (Exception e1) {
@@ -191,14 +193,14 @@ public class CustomerListController {
                 customerFormController.setLableDescription("You cannot edit or save customers from here");
                 customerFormController.hideSaveClearButtons();
 
-
                 Scene scene=new Scene(rootnode);
 
-                Stage primaryStage= (Stage) this.rootnode.getScene().getWindow();
+                Stage stage= new Stage();
 
-                primaryStage.setScene(scene);
-                primaryStage.setTitle("Customer Details");
-                primaryStage.centerOnScreen();
+                stage.setScene(scene);
+                stage.setTitle("Customer Details");
+                stage.centerOnScreen();
+                stage.show();
 
 
             } catch (Exception e1) {
@@ -225,11 +227,12 @@ public class CustomerListController {
 
                     Scene scene=new Scene(rootnode);
 
-                    Stage primaryStage= (Stage) this.rootnode.getScene().getWindow();
+                Stage stage= new Stage();
 
-                    primaryStage.setScene(scene);
-                    primaryStage.setTitle("Customer Update");
-                    primaryStage.centerOnScreen();
+                stage.setScene(scene);
+                stage.setTitle("Customer Update");
+                stage.centerOnScreen();
+                stage.show();
 
 
             } catch (Exception e1) {
@@ -239,16 +242,5 @@ public class CustomerListController {
         });
     }
 
-    @FXML
-    void btnBackOnAction(ActionEvent event) throws IOException {
-        Parent rootnode = FXMLLoader.load(this.getClass().getResource("/lk/ijse/carhire/view/customer/customer_form.fxml"));
-        Scene scene=new Scene(rootnode);
-
-        Stage primaryStage= (Stage) this.rootnode.getScene().getWindow();
-
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Customer Form");
-        primaryStage.centerOnScreen();
-    }
 
 }

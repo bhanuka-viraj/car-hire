@@ -225,26 +225,23 @@ public class RentCarController {
 
     }
 
+
+
     private String generateRentId() {
         try {
             int count = 0;
             String id;
 
             while (true) {
-                // Generate the ID by concatenating car ID, customer NIC, and count
                 id = String.valueOf(carDto.getId() + "_" + custDto.getNic() + "_" + count);
 
-                // Check if the ID already exists in the database
                 RentDto existingRent = rentService.getRentById(id);
 
-                // If the ID exists and the corresponding rent is returned, increment count
                 if (existingRent != null && existingRent.isReturn()==true) {
                     count++;
                 } else if (existingRent != null && existingRent.isReturn()==false) {
-                    // If the ID exists and the corresponding rent is not returned, return null
                     return null;
                 } else {
-                    // Break the loop if the ID doesn't exist
                     break;
                 }
             }

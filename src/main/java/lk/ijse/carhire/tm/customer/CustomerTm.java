@@ -11,11 +11,9 @@ import lombok.NoArgsConstructor;
 public class CustomerTm {
     private String nic;
     private String FstName;
-    private String city;
     private String Cnumber;
-    private String email;
     private Button btnDelete;
     private Button btnUpdate;
     private Button btnDetails;
-    private Button rentDetails;
+    private Button btnRents;
 }

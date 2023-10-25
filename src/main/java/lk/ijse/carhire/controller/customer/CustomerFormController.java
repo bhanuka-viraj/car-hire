@@ -140,38 +140,6 @@ public class CustomerFormController {
         clearFields();
     }
 
-    @FXML
-    void btnMainMenuOnAction(ActionEvent event) throws IOException {
-        Parent rootnode = FXMLLoader.load(this.getClass().getResource("/lk/ijse/carhire/view/dashboard.fxml"));
-        Scene scene=new Scene(rootnode);
-
-        Stage primaryStage= (Stage) this.rootnode.getScene().getWindow();
-
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Car Hire |  Dashboard");
-        primaryStage.centerOnScreen();
-
-    }
-
-
-    @FXML
-    void btnCustomerlistOnAction(ActionEvent event) throws IOException {
-
-        try {
-            Parent rootnode = FXMLLoader.load(this.getClass().getResource("/lk/ijse/carhire/view/customer/customer_list.fxml"));
-            Scene scene=new Scene(rootnode);
-
-            Stage primaryStage= (Stage) this.rootnode.getScene().getWindow();
-
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Customer List");
-            primaryStage.centerOnScreen();
-
-        }catch (Exception e){
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-        }
-    }
-
 
     @FXML
     void btnSaveOnAction(ActionEvent event){
@@ -232,6 +200,11 @@ public class CustomerFormController {
         }
 
 
+
+    }
+
+    @FXML
+    void btnDashboardOnAction(ActionEvent event) {
 
     }
 
