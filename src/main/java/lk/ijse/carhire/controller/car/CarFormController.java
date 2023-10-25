@@ -11,12 +11,12 @@ import lk.ijse.carhire.service.ServiceFactory;
 import lk.ijse.carhire.service.ServiceType;
 import lk.ijse.carhire.service.custom.CarService;
 import lk.ijse.carhire.service.custom.CategoryService;
+import javafx.application.Platform;
+
 
 import java.util.List;
 
 public class CarFormController {
-    @FXML
-    private Button btnMenu;
 
     @FXML
     private TextField txtId;
@@ -55,12 +55,12 @@ public class CarFormController {
     CategoryService CatService=ServiceFactory.getService(ServiceType.CATEGORY);
 
     public void initialize(){
-        btnMenu.requestFocus();
-
         ObservableList<Integer>seats= FXCollections.observableArrayList(2,4,5);
         seatsCombo.setItems(seats);
 
         setCategories();
+
+        Platform.runLater(() -> txtId.requestFocus());
     }
 
     @FXML

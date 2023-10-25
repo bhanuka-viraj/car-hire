@@ -2,12 +2,16 @@ package lk.ijse.carhire.controller.car;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import lk.ijse.carhire.dto.CategoryDto;
 import lk.ijse.carhire.service.ServiceFactory;
 import lk.ijse.carhire.service.ServiceType;
 import lk.ijse.carhire.service.custom.CategoryService;
+
+import java.io.IOException;
 
 public class CategoryFormController {
 
@@ -45,6 +49,7 @@ public class CategoryFormController {
         }
 
     }
+
 
     public void clearFields(){
         txtCatName.setText("");

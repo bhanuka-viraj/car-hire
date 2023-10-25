@@ -1,5 +1,6 @@
 package lk.ijse.carhire.controller.rent;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -67,6 +68,10 @@ public class RentCarController {
     CustomerService custService= ServiceFactory.getService(ServiceType.CUSTOMER);
     CarService carService= ServiceFactory.getService(ServiceType.CAR);
     RentService rentService=ServiceFactory.getService(ServiceType.RENT);
+
+    public void initialize(){
+        Platform.runLater(()->txtCarId.requestFocus());
+    }
     @FXML
     void btnRentOnAction(ActionEvent event) {
         try{

@@ -5,9 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,17 +17,18 @@ import java.io.IOException;
 public class CarCategoryController {
 
     @FXML
-    private TableColumn<?, ?> ColCategory;
+    private AnchorPane node;
 
     @FXML
-    private Label lblHead1;
+    private Button btnCategory;
 
-    @FXML
-    private TableColumn<?, ?> ColSelect;
-
-    @FXML
-    private TableView<?> tblCategories;
-
+    public void initialize(){
+        try {
+            loadCategoryTable();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @FXML
     void btnSedanOnAction(ActionEvent event) {
 
@@ -53,15 +56,28 @@ public class CarCategoryController {
 
     @FXML
     void btnAddNewCategoryOnAction(ActionEvent event) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("/lk/ijse/carhire/view/car/category_form.fxml"));
-        Scene scene=new Scene(root);
+        loadCategoryForm();
+    }
 
-        Stage stage=new Stage();
+    @FXML
+    void btnCategoryListOnAction(ActionEvent event) throws IOException {
+        loadCategoryTable();
+    }
 
-        stage.setScene(scene);
-        stage.setTitle("Car Categories");
-        stage.centerOnScreen();
-        stage.show();
+    public void loadCategoryForm() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/lk/ijse/carhire/view/car/category_form.fxml"));
+        btnCategory.setVisible(true);
+
+        node.getChildren().clear();
+        node.getChildren().add(root);
+    }
+
+    public void loadCategoryTable() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/lk/ijse/carhire/view/car/category_table.fxml"));
+        btnCategory.setVisible(false);
+
+        node.getChildren().clear();
+        node.getChildren().add(root);
     }
 
 

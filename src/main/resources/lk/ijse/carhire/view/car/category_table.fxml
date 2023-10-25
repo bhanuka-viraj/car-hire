@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.car.CategoryTableController">
+   <children>
+      <TableView fx:id="tblCategories" layoutY="-4.0" prefHeight="358.0" prefWidth="319.0">
+         <columns>
+            <TableColumn fx:id="ColCategory" prefWidth="166.66668701171875" text="Category" />
+            <TableColumn fx:id="ColSelect" prefWidth="151.33331298828125" text="Select" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

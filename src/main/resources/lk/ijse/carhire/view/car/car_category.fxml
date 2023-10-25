@@ -85,16 +85,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <AnchorPane layoutX="354.0" layoutY="148.0" opacity="0.85" prefHeight="376.0" prefWidth="326.0">
-         <children>
-            <TableView fx:id="tblCategories" layoutX="7.0" layoutY="12.0" prefHeight="358.0" prefWidth="319.0">
-              <columns>
-                <TableColumn fx:id="ColCategory" prefWidth="166.66668701171875" text="Category" />
-                <TableColumn fx:id="ColSelect" prefWidth="151.33331298828125" text="Select" />
-              </columns>
-            </TableView>
-         </children>
-      </AnchorPane>
+      <AnchorPane fx:id="node" layoutX="354.0" layoutY="148.0" opacity="0.85" prefHeight="376.0" prefWidth="326.0" />
       <Button layoutX="303.0" layoutY="569.0" mnemonicParsing="false" onAction="#btnAddNewCategoryOnAction" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: #ffd32a;" text="Add new Category">
          <font>
             <Font name="Arial Black" size="12.0" />
@@ -127,5 +118,10 @@
          </textFill>
       </Label>
       <Label layoutX="271.0" layoutY="98.0" text="Select a category to view available cars" textFill="#fffafa" />
+      <Button fx:id="btnCategory" layoutX="564.0" layoutY="539.0" mnemonicParsing="false" onAction="#btnCategoryListOnAction" prefHeight="23.0" prefWidth="93.0" style="-fx-background-color: #ffd32a;" text="Category list">
+         <font>
+            <Font name="System Bold Italic" size="10.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

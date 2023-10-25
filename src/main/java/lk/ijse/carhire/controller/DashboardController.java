@@ -1,14 +1,22 @@
 package lk.ijse.carhire.controller;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class DashboardController {
     @FXML
@@ -17,16 +25,44 @@ public class DashboardController {
     @FXML
     private AnchorPane rootnode;
 
+    @FXML
+    private Label lblNode;
+
+    @FXML
+    private Label lblEarnings;
+
+    @FXML
+    private Label lblUnrentedCars;
+
+    @FXML
+    private Label lblTotalCars;
+
+    @FXML
+    private Label lblTime;
+
+    @FXML
+    private Label lblTotalRents;
+
+    @FXML
+    private Label lblDate;
+
+    @FXML
+    private Label lblTotalCustomers;
 
     public void initialize(){
         try {
+            lblNode.setText("Rents");
             loadFXML("/lk/ijse/carhire/view/rent/rent_list.fxml");
+
+            setdate();
+            setTime();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
     @FXML
     void btnCustListOnClick(ActionEvent event) throws IOException {
+        lblNode.setText("Customers");
     loadFXML("/lk/ijse/carhire/view/customer/customer_list.fxml");
     }
 
@@ -45,11 +81,12 @@ public class DashboardController {
 
     @FXML
     void btnCarListOnClick(ActionEvent event) throws IOException {
+        lblNode.setText("Cars");
         loadFXML("/lk/ijse/carhire/view/car/all_cars.fxml");
     }
 
     @FXML
-    void btnLogoutOnClick(ActionEvent event) {
+    void btnLogoutOnAction(ActionEvent event) {
 
     }
 
@@ -96,6 +133,7 @@ public class DashboardController {
 
     @FXML
     void btnRentListOnClick(ActionEvent event) throws IOException {
+        lblNode.setText("Rents");
         loadFXML("/lk/ijse/carhire/view/rent/rent_list.fxml");
     }
 
@@ -104,6 +142,25 @@ public class DashboardController {
 
         node.getChildren().clear();
         node.getChildren().add(root);
+    }
+
+    private void setTime(){
+        final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        final Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            LocalTime currentTime = LocalTime.now();
+            String formattedTime = currentTime.format(timeFormatter);
+            lblTime.setText(formattedTime);
+        }));
+
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+    }
+
+    private void setdate(){
+        LocalDate currentDate = LocalDate.now();
+        String formattedDate = currentDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        lblDate.setText(formattedDate);
     }
 
 }

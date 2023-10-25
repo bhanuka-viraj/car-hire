@@ -16,8 +16,8 @@
             <Image url="@images/background_3.jpg" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="node" layoutX="276.0" layoutY="251.0" opacity="0.8" prefHeight="345.0" prefWidth="705.0" />
-      <Region layoutX="7.0" layoutY="141.0" opacity="0.24" prefHeight="482.0" prefWidth="163.0" style="-fx-background-color: #fff; -fx-background-radius: 5 20 20 5;" />
+      <AnchorPane fx:id="node" layoutX="276.0" layoutY="251.0" opacity="0.8" prefHeight="345.0" prefWidth="705.0" style="-fx-background-color: #fff;" />
+      <Region layoutX="7.0" layoutY="141.0" opacity="0.24" prefHeight="482.0" prefWidth="163.0" style="-fx-background-color: #192a56; -fx-background-radius: 5 20 20 5;" />
       <Button layoutX="33.0" layoutY="177.0" mnemonicParsing="false" onAction="#btnCustListOnClick" prefHeight="35.0" prefWidth="112.0" style="-fx-background-radius: 100; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 100;" text="Customer list" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="21.0">
@@ -48,7 +48,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="944.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnLogoutOnClick" prefHeight="22.0" prefWidth="70.0" style="-fx-background-radius: 100; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 100;" text="Logout" textFill="WHITE">
+      <Button layoutX="944.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnLogoutOnAction" prefHeight="22.0" prefWidth="70.0" style="-fx-background-radius: 100; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 100;" text="Logout" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="18.0" fitWidth="17.0">
                <image>
@@ -60,14 +60,14 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <Region layoutX="347.0" layoutY="66.0" opacity="0.29" prefHeight="124.0" prefWidth="105.0" style="-fx-background-color: #fff; -fx-background-radius: 15;" />
+      <Region layoutX="347.0" layoutY="66.0" opacity="0.29" prefHeight="124.0" prefWidth="105.0" style="-fx-background-color: #192a56; -fx-background-radius: 15;" />
       <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="379.0" layoutY="74.0">
          <image>
             <Image url="@icons/customer.png" />
          </image>
       </ImageView>
-      <Region layoutX="547.0" layoutY="66.0" opacity="0.29" prefHeight="124.0" prefWidth="105.0" style="-fx-background-color: #fff; -fx-background-radius: 15;" />
-      <Region layoutX="749.0" layoutY="66.0" opacity="0.29" prefHeight="124.0" prefWidth="105.0" style="-fx-background-color: #fff; -fx-background-radius: 15;" />
+      <Region layoutX="547.0" layoutY="66.0" opacity="0.29" prefHeight="124.0" prefWidth="105.0" style="-fx-background-color: #192a56; -fx-background-radius: 15;" />
+      <Region layoutX="749.0" layoutY="66.0" opacity="0.29" prefHeight="124.0" prefWidth="105.0" style="-fx-background-color: #192a56; -fx-background-radius: 15;" />
       <ImageView fitHeight="35.0" fitWidth="47.0" layoutX="782.0" layoutY="74.0">
          <image>
             <Image url="@icons/rent.png" />
@@ -81,9 +81,9 @@
       <Label layoutX="355.0" layoutY="124.0" text="Total Customers" textFill="WHITE" />
       <Label layoutX="573.0" layoutY="124.0" text="Total Cars" textFill="WHITE" />
       <Label layoutX="768.0" layoutY="124.0" text="Total Rents" textFill="WHITE" />
-      <Label layoutX="394.0" layoutY="159.0" text="0" textFill="WHITE" />
-      <Label layoutX="596.0" layoutY="159.0" text="0" textFill="WHITE" />
-      <Label layoutX="798.0" layoutY="159.0" text="0" textFill="WHITE" />
+      <Label fx:id="lblTotalCustomers" layoutX="394.0" layoutY="159.0" text="0" textFill="WHITE" />
+      <Label fx:id="lblTotalCars" layoutX="596.0" layoutY="159.0" text="0" textFill="WHITE" />
+      <Label fx:id="lblTotalRents" layoutX="798.0" layoutY="159.0" text="0" textFill="WHITE" />
       <Label layoutX="448.0" layoutY="15.0" text="CAR HIRE PVT LTD" textFill="WHITE">
          <font>
             <Font name="Consolas" size="22.0" />
@@ -105,12 +105,12 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="776.0" layoutY="657.0" text="2023-08-14" textFill="WHITE">
+      <Label fx:id="lblDate" layoutX="776.0" layoutY="657.0" text="2023-08-14" textFill="WHITE">
          <font>
             <Font name="Consolas" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="777.0" layoutY="678.0" text="2023-08-14" textFill="WHITE">
+      <Label fx:id="lblTime" layoutX="777.0" layoutY="678.0" text="2023-08-14" textFill="WHITE">
          <font>
             <Font name="Consolas" size="14.0" />
          </font>
@@ -120,32 +120,32 @@
             <Font name="Consolas" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="464.0" layoutY="676.0" text="0" textFill="WHITE">
+      <Label fx:id="lblUnrentedCars" layoutX="464.0" layoutY="676.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="467.0" layoutY="654.0" text="0" textFill="WHITE">
+      <Label fx:id="lblEarnings" layoutX="464.0" layoutY="656.0" text="0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="408.0" layoutY="676.0" text=":" textFill="WHITE">
+      <Label layoutX="417.0" layoutY="677.0" text=":" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="411.0" layoutY="654.0" text=":" textFill="WHITE">
+      <Label layoutX="417.0" layoutY="655.0" text=":" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="275.0" layoutY="676.0" text="Unrented cars" textFill="WHITE">
+      <Label layoutX="245.0" layoutY="677.0" text="Unrented cars" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="278.0" layoutY="654.0" text="Total earnings " textFill="WHITE">
+      <Label layoutX="245.0" layoutY="656.0" text="Earnings for the month" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -162,5 +162,10 @@
          </graphic>
       </Button>
       <Button layoutX="33.0" layoutY="547.0" mnemonicParsing="false" onAction="#btnRentListOnClick" prefHeight="35.0" prefWidth="112.0" style="-fx-background-radius: 5 5 25 25; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 5 5 25 25;" text="Rent list" textFill="WHITE" />
+      <Label fx:id="lblNode" layoutX="308.0" layoutY="212.0" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="21.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

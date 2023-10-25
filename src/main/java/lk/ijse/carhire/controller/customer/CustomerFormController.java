@@ -1,5 +1,6 @@
 package lk.ijse.carhire.controller.customer;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -94,6 +95,8 @@ public class CustomerFormController {
         try {
             maleRadioBtn.setToggleGroup(genderToggleGroup);
             femaleRadioBtn.setToggleGroup(genderToggleGroup);
+
+            Platform.runLater(()->txtFirstName.requestFocus());
 
         }catch (Exception e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();

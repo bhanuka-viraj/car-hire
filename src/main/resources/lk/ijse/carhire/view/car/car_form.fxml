@@ -27,7 +27,7 @@
             <Image url="@../images/background_2.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="txtVehicleNmb" layoutX="278.0" layoutY="184.0" promptText="Vehicle number" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
+      <TextField fx:id="txtVehicleNmb" layoutX="280.0" layoutY="158.0" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
       <ComboBox fx:id="categoryCombo" layoutX="540.0" layoutY="386.0" prefWidth="150.0" promptText="category" />
       <ComboBox fx:id="seatsCombo" layoutX="540.0" layoutY="308.0" prefWidth="150.0" promptText="Number of seats" />
       <TextArea fx:id="txtRemaks" layoutX="56.0" layoutY="376.0" prefHeight="57.0" prefWidth="392.0" />
@@ -39,24 +39,24 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField fx:id="txtMake" layoutX="539.0" layoutY="184.0" promptText="Make" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
-      <TextField fx:id="txtYom" layoutX="278.0" layoutY="307.0" promptText="Year of manuactured" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
-      <TextField fx:id="txtMinDeposit" layoutX="278.0" layoutY="241.0" promptText="Mnimum deposit" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
-      <TextField fx:id="txtMaxKm" layoutX="56.0" layoutY="244.0" promptText="max km per day" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
-      <TextField fx:id="txtPricePerDay" layoutX="539.0" layoutY="244.0" promptText="price per day" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
+      <TextField fx:id="txtMake" layoutX="541.0" layoutY="158.0" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
+      <TextField fx:id="txtYom" layoutX="278.0" layoutY="307.0" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
+      <TextField fx:id="txtMinDeposit" layoutX="277.0" layoutY="228.0" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
+      <TextField fx:id="txtMaxKm" layoutX="55.0" layoutY="231.0" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
+      <TextField fx:id="txtPricePerDay" layoutX="538.0" layoutY="231.0" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
       <Label layoutX="68.0" layoutY="357.0" prefHeight="17.0" prefWidth="64.0" text="Remaks" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="txtColour" layoutX="56.0" layoutY="307.0" promptText="Colour" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
-      <TextField fx:id="txtId" layoutX="57.0" layoutY="184.0" promptText="Car Id" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
-      <Label layoutX="260.0" layoutY="34.0" opacity="0.64" text="CarHire Pvt Ltd" textFill="WHITE">
+      <TextField fx:id="txtColour" layoutX="56.0" layoutY="307.0" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
+      <TextField fx:id="txtId" layoutX="59.0" layoutY="158.0" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
+      <Label layoutX="268.0" layoutY="14.0" opacity="0.64" text="CarHire Pvt Ltd" textFill="WHITE">
          <font>
             <Font name="Consolas" size="28.0" />
          </font>
       </Label>
-      <Label fx:id="lblHead1" layoutX="338.0" layoutY="77.0" text="Car Form" textAlignment="CENTER">
+      <Label fx:id="lblHead1" layoutX="346.0" layoutY="57.0" text="Car Form" textAlignment="CENTER">
          <font>
             <Font name="Eras Demi ITC" size="17.0" />
          </font>
@@ -78,5 +78,13 @@
          </textFill>
       </Label>
       <Button layoutX="504.0" layoutY="462.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="17.0" prefWidth="73.0" style="-fx-background-color: #0097e6; -fx-background-radius: 15; -fx-border-color: #fff; -fx-border-radius: 15;" text="Clear" textFill="WHITE" />
+      <Label layoutX="74.0" layoutY="133.0" text="Car id" textFill="WHITE" />
+      <Label layoutX="293.0" layoutY="133.0" text="Vehicle number" textFill="WHITE" />
+      <Label layoutX="547.0" layoutY="133.0" text="Make" textFill="WHITE" />
+      <Label layoutX="59.0" layoutY="203.0" text="Max km per day" textFill="WHITE" />
+      <Label layoutX="287.0" layoutY="203.0" text="Minimum deposit" textFill="WHITE" />
+      <Label layoutX="544.0" layoutY="203.0" text="Price per day" textFill="WHITE" />
+      <Label layoutX="68.0" layoutY="282.0" text="Colour" textFill="WHITE" />
+      <Label layoutX="293.0" layoutY="282.0" text="Year of manufactured" textFill="WHITE" />
    </children>
 </AnchorPane>
