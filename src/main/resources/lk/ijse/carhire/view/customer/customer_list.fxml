@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -15,9 +16,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootnode" prefHeight="345.0" prefWidth="706.0" style="-fx-background-color: #2f3542;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.customer.CustomerListController">
+<AnchorPane fx:id="rootnode" prefHeight="374.0" prefWidth="705.0" style="-fx-background-color: none;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.customer.CustomerListController">
    <children>
-      <TableView fx:id="tblCustomer" prefHeight="345.0" prefWidth="705.0">
+      <TableView fx:id="tblCustomer" layoutX="1.0" layoutY="29.0" prefHeight="345.0" prefWidth="705.0">
          <columns>
             <TableColumn fx:id="colNic" prefWidth="111.66665649414062" text="NIC" />
             <TableColumn fx:id="colName" prefWidth="114.0" text="Name" />
@@ -28,5 +29,14 @@
             <TableColumn fx:id="colRents" prefWidth="65.0" text="Rents" />
          </columns>
       </TableView>
+      <Button layoutX="633.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnReloadOnAction" prefHeight="25.0" prefWidth="0.0" style="-fx-background-color: #000;">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="16.0">
+               <image>
+                  <Image url="@../icons/reload.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

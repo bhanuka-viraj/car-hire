@@ -8,9 +8,12 @@ import java.util.List;
 
 public interface CarDao extends SuperDao {
     public boolean save(Car car);
+    public boolean update(Car car);
     public List<Car> getAll();
 
     public Car get(String id);
 
-    public boolean delete( Car id);
+    public boolean delete( String id);
+
+    public boolean setIsRented(String id, boolean isRented);
 }

@@ -1,9 +1,6 @@
 package lk.ijse.carhire.service;
 
-import lk.ijse.carhire.service.custom.impl.CarServiceImpl;
-import lk.ijse.carhire.service.custom.impl.CategoryServiceImpl;
-import lk.ijse.carhire.service.custom.impl.CustomerServiceImpl;
-import lk.ijse.carhire.service.custom.impl.RentServiceImpl;
+import lk.ijse.carhire.service.custom.impl.*;
 
 public class ServiceFactory {
     public static <T extends SuperService>T getService(ServiceType type){
@@ -18,6 +15,9 @@ public class ServiceFactory {
                 return (T) new CarServiceImpl();
             case RENT:
                 return (T) new RentServiceImpl();
+
+            case USER:
+                return (T) new UserServiceImpl();
 
             default:
                 return null;

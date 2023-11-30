@@ -16,7 +16,7 @@
             <Image url="@images/background_3.jpg" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="node" layoutX="276.0" layoutY="251.0" opacity="0.8" prefHeight="345.0" prefWidth="705.0" style="-fx-background-color: #fff;" />
+      <AnchorPane fx:id="node" layoutX="280.0" layoutY="226.0" opacity="0.8" prefHeight="374.0" prefWidth="725.0" />
       <Region layoutX="7.0" layoutY="141.0" opacity="0.24" prefHeight="482.0" prefWidth="163.0" style="-fx-background-color: #192a56; -fx-background-radius: 5 20 20 5;" />
       <Button layoutX="33.0" layoutY="177.0" mnemonicParsing="false" onAction="#btnCustListOnClick" prefHeight="35.0" prefWidth="112.0" style="-fx-background-radius: 100; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 100;" text="Customer list" textFill="WHITE">
          <graphic>
@@ -29,6 +29,9 @@
          <font>
             <Font size="11.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button layoutX="33.0" layoutY="504.0" mnemonicParsing="false" onAction="#btnRentFormOnClick" prefHeight="35.0" prefWidth="112.0" style="-fx-background-radius: 100; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 100;" text="Rent" textFill="WHITE">
          <graphic>
@@ -38,6 +41,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button layoutX="33.0" layoutY="299.0" mnemonicParsing="false" onAction="#btnCarListOnClick" prefHeight="35.0" prefWidth="112.0" style="-fx-background-radius: 100; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 100;" text="Car list" textFill="WHITE">
          <graphic>
@@ -47,6 +53,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button layoutX="944.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnLogoutOnAction" prefHeight="22.0" prefWidth="70.0" style="-fx-background-radius: 100; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 100;" text="Logout" textFill="WHITE">
          <graphic>
@@ -150,8 +159,14 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="33.0" layoutY="220.0" mnemonicParsing="false" onAction="#btnCustFormOnClick" prefHeight="35.0" prefWidth="112.0" style="-fx-background-radius: 5 5 25 25; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 5 5 25 25;" text="Registration form" textFill="WHITE" />
-      <Button layoutX="33.0" layoutY="340.0" mnemonicParsing="false" onAction="#btnCarFormOnClick" prefHeight="35.0" prefWidth="112.0" style="-fx-background-radius: 5 5 25 25; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 5 5 25 25;" text="Registration form" textFill="WHITE" />
+      <Button layoutX="33.0" layoutY="220.0" mnemonicParsing="false" onAction="#btnCustFormOnClick" prefHeight="35.0" prefWidth="112.0" style="-fx-background-radius: 5 5 25 25; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 5 5 25 25;" text="Registration form" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button layoutX="33.0" layoutY="340.0" mnemonicParsing="false" onAction="#btnCarFormOnClick" prefHeight="35.0" prefWidth="112.0" style="-fx-background-radius: 5 5 25 25; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 5 5 25 25;" text="Registration form" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Button layoutX="33.0" layoutY="424.0" mnemonicParsing="false" onAction="#btnCategoriesOnClick" prefHeight="35.0" prefWidth="112.0" style="-fx-background-radius: 100; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 100;" text="Categories" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="25.0">
@@ -160,12 +175,24 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Button layoutX="33.0" layoutY="547.0" mnemonicParsing="false" onAction="#btnRentListOnClick" prefHeight="35.0" prefWidth="112.0" style="-fx-background-radius: 5 5 25 25; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 5 5 25 25;" text="Rent list" textFill="WHITE" />
-      <Label fx:id="lblNode" layoutX="308.0" layoutY="212.0" textFill="WHITE">
+      <Button layoutX="33.0" layoutY="547.0" mnemonicParsing="false" onAction="#btnRentListOnClick" prefHeight="35.0" prefWidth="112.0" style="-fx-background-radius: 5 5 25 25; -fx-background-color: #000; -fx-border-color: #fff; -fx-border-radius: 5 5 25 25;" text="Rent list" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label fx:id="lblTblHead" layoutX="308.0" layoutY="212.0" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="21.0" />
          </font>
       </Label>
+      <Label fx:id="lblTblDesc" layoutX="493.0" layoutY="229.0" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="902.0" layoutY="190.0" prefHeight="25.0" prefWidth="112.0" promptText="Sort by" />
    </children>
 </AnchorPane>

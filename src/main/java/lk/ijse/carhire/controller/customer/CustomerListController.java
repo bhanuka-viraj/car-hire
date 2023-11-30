@@ -74,6 +74,10 @@ public class CustomerListController {
       getAllCustomers();
     }
 
+    @FXML
+    void btnReloadOnAction(ActionEvent event) {
+        getAllCustomers();
+    }
     private void getAllCustomers() {
         try {
             List<CustomerDto>allCustomers=service.getAllCustomers();
@@ -100,9 +104,9 @@ public class CustomerListController {
                 btnDetails.setCursor(Cursor.HAND);
 
                 Button btnRents = new Button("Rents");
-                btnDetails.setStyle("-fx-background-color: #474787; -fx-text-fill: white;");
-                btnDetails.setMaxSize(95, 50);
-                btnDetails.setCursor(Cursor.HAND);
+                btnRents.setStyle("-fx-background-color: #44bd32; -fx-text-fill: white;");
+                btnRents.setMaxSize(95, 50);
+                btnRents.setCursor(Cursor.HAND);
 
                 CustomerTm customerTm = new CustomerTm(c.getNic(),c.getFstname(),c.getCnumber(),btnDelete,btnUpdate,btnDetails,btnRents);
 
@@ -189,6 +193,10 @@ public class CustomerListController {
                 customerFormController.setCustomerDto(selectedCustomer);
                 customerFormController.setFields();
                 customerFormController.disableFields();
+                customerFormController.setLblDescription2("");
+                customerFormController.setBtnSave(false);
+                customerFormController.setBtnUpdate(false);
+                customerFormController.setBtnClear(false);
                 customerFormController.setLableHead1("Customer Details");
                 customerFormController.setLableDescription("You cannot edit or save customers from here");
                 customerFormController.hideSaveClearButtons();
@@ -222,6 +230,10 @@ public class CustomerListController {
 
                     customerFormController.setCustomerDto(selectedCustomer);
                     customerFormController.setFields();
+                    customerFormController.setBtnUpdate(true);
+                    customerFormController.setBtnSave(false);
+                    customerFormController.setDisableNic(false);
+                    customerFormController.setLblDescription2("You cannot edit or update the NIC number");
                     customerFormController.setLableHead1("Update Customer");
                     customerFormController.setLableDescription("Change the fields that you want to update and click Save button");
 
@@ -241,6 +253,7 @@ public class CustomerListController {
 
         });
     }
+
 
 
 }

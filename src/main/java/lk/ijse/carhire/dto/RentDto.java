@@ -19,6 +19,7 @@ public class RentDto {
     private Double refundableDeposit;
     private Double advancedPayment;
     private double perDayRent;
+    private double overdueAmt;
     private CarDto carDto;
     private CustomerDto customerDto;
 }

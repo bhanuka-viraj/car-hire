@@ -18,6 +18,7 @@ public class CarDto {
     private double pricePerDay;
     private double minDeposit;
     private int maxKmPerDay;
+    private boolean isRented;
     private String remarks;
     private String category;
 

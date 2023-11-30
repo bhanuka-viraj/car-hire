@@ -44,12 +44,15 @@ public class Car {
     @Lob
     private String remarks;
 
+    @Column(nullable = false)
+    private boolean isRented;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", nullable = false)
     private CarCategory category;
 
     @CreationTimestamp
-    @Column(name = "create_date", nullable = false)
+    @Column(name = "create_date", updatable = false)
     private Date createDate;
 
     @UpdateTimestamp

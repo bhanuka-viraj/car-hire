@@ -4,5 +4,6 @@ public enum ServiceType {
     CUSTOMER,
     CATEGORY,
     CAR,
-    RENT
+    RENT,
+    USER
 }

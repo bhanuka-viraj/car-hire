@@ -4,5 +4,6 @@ public enum DaoType {
     CUSTOMER,
     CATEGORY,
     CAR,
-    RENT
+    RENT,
+    USER
 }

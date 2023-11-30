@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import lk.ijse.carhire.dto.CustomerDto;
 import lk.ijse.carhire.service.ServiceFactory;
@@ -35,6 +36,8 @@ public class CustomerFormController {
 
     @FXML
     private Label lblDescription;
+    @FXML
+    private Label lblDescription2;
 
     @FXML
     private DatePicker dateOfBirth;
@@ -74,6 +77,8 @@ public class CustomerFormController {
 
     @FXML
     private TextField txtPostalCode;
+    @FXML
+    private Button btnUpdate;
 
     @FXML
     private TextField txtProvince;
@@ -81,31 +86,33 @@ public class CustomerFormController {
     @FXML
     private TextField txtSalary;
 
-    private ToggleGroup genderToggleGroup=new ToggleGroup();
+    private ToggleGroup genderToggleGroup = new ToggleGroup();
 
-    private CustomerService service= ServiceFactory.getService(ServiceType.CUSTOMER);
+    private CustomerService service = ServiceFactory.getService(ServiceType.CUSTOMER);
 
     private CustomerDto customerDto;
 
-    public CustomerFormController(){
-        customerDto=new CustomerDto();
+    public CustomerFormController() {
+        customerDto = new CustomerDto();
     }
 
-    public void initialize(){
+    public void initialize() {
         try {
             maleRadioBtn.setToggleGroup(genderToggleGroup);
             femaleRadioBtn.setToggleGroup(genderToggleGroup);
+            btnUpdate.setVisible(false);
+            setLblDescription2("Please note that once registered, you cannot edit or update the NIC number.");
 
-            Platform.runLater(()->txtFirstName.requestFocus());
+            Platform.runLater(() -> txtFirstName.requestFocus());
 
-        }catch (Exception e){
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
 
     }
 
-    public void setLableHead1(String text){
+    public void setLableHead1(String text) {
         lblHead1.setText(text);
         lblHead1.setAlignment(Pos.CENTER);
 
@@ -113,7 +120,7 @@ public class CustomerFormController {
         AnchorPane.setRightAnchor(lblHead1, (rootnode.getWidth() - lblHead1.getWidth()) / 2);
     }
 
-    public void setLableDescription(String text){
+    public void setLableDescription(String text) {
         lblDescription.setText(text);
 
         lblDescription.setAlignment(Pos.CENTER);
@@ -122,20 +129,28 @@ public class CustomerFormController {
         AnchorPane.setRightAnchor(lblDescription, (rootnode.getWidth() - lblDescription.getWidth()) / 2);
     }
 
-    public void hideSaveClearButtons(){
+    public void setLblDescription2(String text){
+        lblDescription2.setText(text);
+        lblDescription2.setAlignment(Pos.CENTER);
+
+        AnchorPane.setLeftAnchor(lblDescription2, (rootnode.getWidth() - lblDescription2.getWidth()) / 2);
+        AnchorPane.setRightAnchor(lblDescription2, (rootnode.getWidth() - lblDescription2.getWidth()) / 2);
+        lblDescription2.setTextFill(Color.web("#FFA500"));
+    }
+
+    public void hideSaveClearButtons() {
         btnClear.setVisible(false);
         btnSave.setVisible(false);
     }
 
 
-    public CustomerDto getcustomerDto(){
+    public CustomerDto getcustomerDto() {
         return customerDto;
     }
 
-    public void setCustomerDto (CustomerDto customerDto){
-        this.customerDto=customerDto;
+    public void setCustomerDto(CustomerDto customerDto) {
+        this.customerDto = customerDto;
     }
-
 
 
     @FXML
@@ -145,14 +160,46 @@ public class CustomerFormController {
 
 
     @FXML
-    void btnSaveOnAction(ActionEvent event){
+    void btnSaveOnAction(ActionEvent event) {
 
 
         try {
-            RadioButton selectedRadioBtn= (RadioButton) genderToggleGroup.getSelectedToggle();
-            String selectedGender=selectedRadioBtn.getText();
+            if (!checkExisting()) {
+                saveCustomer();
+            }
 
-            LocalDate dob=dateOfBirth.getValue();
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.WARNING, "Please fill out the fields with correct information | " + e.getMessage()).show();
+        }
+
+
+    }
+
+
+    @FXML
+    void txtNicOnAction(ActionEvent event) {
+        checkExisting();
+
+
+    }
+
+    @FXML
+    void btnUpdateOnAction(ActionEvent actionEvent) {
+        try {
+                saveCustomer();
+
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.WARNING, "Error updating customer: " + e.getMessage()).show();
+        }
+
+    }
+
+    private void saveCustomer() {
+        try {
+            RadioButton selectedRadioBtn = (RadioButton) genderToggleGroup.getSelectedToggle();
+            String selectedGender = selectedRadioBtn.getText();
+
+            LocalDate dob = dateOfBirth.getValue();
 
 
             CustomerDto customerDto = new CustomerDto(txtNic.getText(),
@@ -169,49 +216,47 @@ public class CustomerFormController {
                     txtEmail.getText(),
                     Double.parseDouble(txtSalary.getText()),
                     selectedGender);
-            boolean isSaved=service.saveCustomer(customerDto);
 
-            if (isSaved){
+            boolean isSaved= service.saveCustomer(customerDto);
+
+
+            if (isSaved) {
                 clearFields();
-                new Alert(Alert.AlertType.CONFIRMATION,"Customer saved successfully !").show();
-            }else {
-                new Alert(Alert.AlertType.WARNING,"Please fill out the fields with correct information").show();
+                    new Alert(Alert.AlertType.CONFIRMATION, "Customer saved successfully !").show();
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Please fill out the fields with correct information").show();
             }
-
-        }catch (Exception e){
-            new Alert(Alert.AlertType.WARNING,"Please fill out the fields with correct information | "+e.getMessage()).show();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-
 
     }
 
 
-
-    @FXML
-    void txtNicOnAction(ActionEvent event){
+    private boolean checkExisting() {
         try {
-            customerDto=service.getCustomerByNic(txtNic.getText());
+            customerDto = service.getCustomerByNic(txtNic.getText());
 
-            if(customerDto!=null){
+            if (customerDto != null) {
+                new Alert(Alert.AlertType.WARNING, "Customer of NIC number you entered is " +
+                        "already registered, please check the customer list, or if you need to update details you can " +
+                        "update from here").show();
                 setFields();
-            }else{
-                new Alert(Alert.AlertType.WARNING,"Customer not found").show();
+                btnUpdate.setVisible(true);
+                return true;
+            } else {
+                dateOfBirth.requestFocus();
+                return false;
             }
 
-        }catch (Exception e){
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            return false;
         }
-
-
-
     }
 
-    @FXML
-    void btnDashboardOnAction(ActionEvent event) {
 
-    }
-
-    public void setFields(){
+    public void setFields() {
         txtNic.setText(customerDto.getNic());
         txtFirstName.setText(customerDto.getFstname());
         txtLastName.setText(customerDto.getLstname());
@@ -225,17 +270,17 @@ public class CustomerFormController {
         txtCnumber.setText(customerDto.getCnumber());
         txtSalary.setText(String.valueOf(customerDto.getSalary()));
 
-        String gender=customerDto.getGender();
+        String gender = customerDto.getGender();
 
-            if (gender.equals("Male")){
-                maleRadioBtn.setSelected(true);
-            } else if (gender.equals("Female")) {
-                femaleRadioBtn.setSelected(true);
-            }
+        if (gender.equals("Male")) {
+            maleRadioBtn.setSelected(true);
+        } else if (gender.equals("Female")) {
+            femaleRadioBtn.setSelected(true);
+        }
 
 
-        LocalDate dob =customerDto.getDob();
-        if (dob!=null){
+        LocalDate dob = customerDto.getDob();
+        if (dob != null) {
             dateOfBirth.setValue(dob);
         }
 
@@ -258,7 +303,7 @@ public class CustomerFormController {
         genderToggleGroup.selectToggle(null);
     }
 
-    public void disableFields(){
+    public void disableFields() {
         txtNic.setEditable(false);
         txtFirstName.setEditable(false);
         txtLastName.setEditable(false);
@@ -273,12 +318,42 @@ public class CustomerFormController {
         txtEmail.setEditable(false);
         txtSalary.setEditable(false);
 
-        for (Toggle toggle:genderToggleGroup.getToggles()) {
-            RadioButton radioButton= (RadioButton) toggle;
+        for (Toggle toggle : genderToggleGroup.getToggles()) {
+            RadioButton radioButton = (RadioButton) toggle;
             radioButton.setDisable(true);
         }
     }
 
+    public void setBtnUpdate(boolean value){
+        if (value==true){
+            btnUpdate.setVisible(true);
+        }else {
+            btnUpdate.setVisible(false);
+        }
+    }
 
+    public void setBtnSave(boolean value){
+        if (value==true){
+            btnSave.setVisible(true);
+        }else {
+            btnSave.setVisible(false);
+        }
+    }
+
+    public void setDisableNic(boolean value){
+        if (value==true){
+            txtNic.setEditable(true);
+        }else {
+            txtNic.setEditable(false);
+        }
+    }
+
+    public void setBtnClear(boolean value) {
+        if (value==true){
+            btnClear.setVisible(true);
+        }else {
+            btnClear.setVisible(false);
+        }
+    }
 }
 

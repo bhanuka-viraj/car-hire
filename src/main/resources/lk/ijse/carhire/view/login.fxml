@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
@@ -11,69 +18,62 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="rootnode" prefHeight="549.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.LoginController">
+<AnchorPane fx:id="rootnode" prefHeight="380.0" prefWidth="620.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.LoginController">
    <children>
-      <Label layoutX="160.0" layoutY="90.0" text="Login" textFill="#fc0000">
+      <AnchorPane layoutX="279.0" prefHeight="380.0" prefWidth="341.0" style="-fx-background-color: #1e272e;">
+         <children>
+            <Label layoutX="51.0" layoutY="64.0" text="Please use your username and password to log in" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtUserName" layoutX="51.0" layoutY="125.0" prefHeight="25.0" prefWidth="240.0" promptText="Username" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
+            <Button layoutX="88.0" layoutY="240.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="29.0" prefWidth="165.0" style="-fx-background-color: #0984e3;" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="109.0" layoutY="282.0" text="Don't have an account?" textFill="WHITE" />
+            <Label layoutX="70.0" layoutY="320.0" text="Click " textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Hyperlink layoutX="106.0" layoutY="317.0" onAction="#linkRegisterOnAction" text="Register now!">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
+            <Label layoutX="207.0" layoutY="320.0" text="to register" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="144.0" layoutY="14.0" text="Login" textFill="#f0932b">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="txtPassword" layoutX="52.0" layoutY="178.0" prefHeight="25.0" prefWidth="240.0" promptText="Password" style="-fx-background-color: none; -fx-alignment: center; -fx-background-insets: 0, 0, 1, 0; -fx-border-color: transparent transparent #fff transparent; -fx-text-fill: #fff;" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="380.0" fitWidth="280.0">
+         <image>
+            <Image url="@images/background_3.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="49.0" layoutY="54.0" text="CAR HIRE PVT LTD" textFill="WHITE">
          <font>
-            <Font name="Arial Rounded MT Bold" size="41.0" />
+            <Font name="Corbel Bold" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="134.0" layoutY="14.0" text="CarHire">
+      <Label layoutX="28.0" layoutY="341.0" text="© 2023 Car Hire PVT LTD. All rights reserved." textFill="WHITE">
          <font>
-            <Font name="Britannic Bold" size="48.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="0.04265402843601896" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.5138736367225647" green="0.5394737124443054" blue="0.027473196387290955" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Label>
-      <TextField fx:id="txtUserName" layoutX="51.0" layoutY="211.0" prefHeight="40.0" prefWidth="332.0" promptText="Username" />
-      <TextField fx:id="txtPassword" layoutX="51.0" layoutY="275.0" prefHeight="40.0" prefWidth="332.0" promptText="Password" />
-      <Label layoutX="63.0" layoutY="163.0" text="Please use your username and password to log in">
-         <font>
-            <Font size="14.0" />
+            <Font size="11.0" />
          </font>
       </Label>
-      <Label layoutX="116.0" layoutY="455.0" text="Click ">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Hyperlink layoutX="152.0" layoutY="452.0" onAction="#linkRegisterOnAction" text="Register now!">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Hyperlink>
-      <Label layoutX="253.0" layoutY="455.0" text="to register">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="143.0" layoutY="391.0" text="Don't have an account?">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Button layoutX="51.0" layoutY="340.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="40.0" prefWidth="332.0" style="-fx-background-color: #0984e3;" text="Login" textFill="WHITE">
-         <font>
-            <Font size="19.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
    </children>
 </AnchorPane>

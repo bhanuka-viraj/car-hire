@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -26,8 +28,10 @@ public class DashboardController {
     private AnchorPane rootnode;
 
     @FXML
-    private Label lblNode;
+    private Label lblTblHead;
 
+    @FXML
+    private Label lblTblDesc;
     @FXML
     private Label lblEarnings;
 
@@ -51,7 +55,7 @@ public class DashboardController {
 
     public void initialize(){
         try {
-            lblNode.setText("Rents");
+            lblTblHead.setText("Rents");
             loadFXML("/lk/ijse/carhire/view/rent/rent_list.fxml");
 
             setdate();
@@ -62,7 +66,7 @@ public class DashboardController {
     }
     @FXML
     void btnCustListOnClick(ActionEvent event) throws IOException {
-        lblNode.setText("Customers");
+        lblTblHead.setText("Customers");
     loadFXML("/lk/ijse/carhire/view/customer/customer_list.fxml");
     }
 
@@ -81,13 +85,36 @@ public class DashboardController {
 
     @FXML
     void btnCarListOnClick(ActionEvent event) throws IOException {
-        lblNode.setText("Cars");
+        lblTblHead.setText("Cars");
+        lblTblDesc.setText("Double click to view or update details");
         loadFXML("/lk/ijse/carhire/view/car/all_cars.fxml");
     }
 
     @FXML
     void btnLogoutOnAction(ActionEvent event) {
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Confirmation");
+        confirmationAlert.setHeaderText("Are you sure you want to log out?");
 
+        confirmationAlert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+
+        confirmationAlert.showAndWait().ifPresent(buttonType -> {
+            if (buttonType == ButtonType.YES) {
+                Stage stage = (Stage) rootnode.getScene().getWindow();
+                stage.close();
+
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/lk/ijse/carhire/view/login.fxml"));
+                    Scene scene = new Scene(root);
+                    Stage stage1 = new Stage();
+                    stage1.setScene(scene);
+                    stage1.setTitle("User | Login");
+                    stage1.show();
+                } catch (Exception e) {
+                    e.printStackTrace(); // Handle the exception according to your needs
+                }
+            }
+        });
     }
 
     @FXML
@@ -133,7 +160,7 @@ public class DashboardController {
 
     @FXML
     void btnRentListOnClick(ActionEvent event) throws IOException {
-        lblNode.setText("Rents");
+        lblTblHead.setText("Rents");
         loadFXML("/lk/ijse/carhire/view/rent/rent_list.fxml");
     }
 

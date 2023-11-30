@@ -1,5 +1,6 @@
 package lk.ijse.carhire.dbHibernate;
 
+import lk.ijse.carhire.entity.User;
 import lk.ijse.carhire.entity.car.Car;
 import lk.ijse.carhire.entity.car.CarCategory;
 import lk.ijse.carhire.entity.car.Rent;
@@ -24,6 +25,7 @@ public class HibernateUtil {
                 .addAnnotatedClass(CarCategory.class)
                 .addAnnotatedClass(Rent.class)
                 .addAnnotatedClass(Car.class)
+                .addAnnotatedClass(User.class)
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();

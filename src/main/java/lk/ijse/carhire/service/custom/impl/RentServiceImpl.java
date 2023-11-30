@@ -13,15 +13,18 @@ import lk.ijse.carhire.entity.car.Rent;
 import lk.ijse.carhire.entity.customer.Customer;
 import lk.ijse.carhire.service.custom.RentService;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RentServiceImpl implements RentService {
-    RentDao rentDao = DaoFactory.getDao(DaoType.RENT);
-    CustomerDao customerDao=DaoFactory.getDao(DaoType.CUSTOMER);
-    CarDao carDao=DaoFactory.getDao(DaoType.CAR);
+    private RentDao rentDao = DaoFactory.getDao(DaoType.RENT);
+    private CustomerDao customerDao=DaoFactory.getDao(DaoType.CUSTOMER);
+    private CarDao carDao=DaoFactory.getDao(DaoType.CAR);
     @Override
     public boolean saveRent(RentDto rentDto) throws Exception {
         Rent rent = new Rent();
+        Rent existingRent = rentDao.getRent(rentDto.getId());
         Car car=carDao.get(rentDto.getCarDto().getId());
         Customer customer=customerDao.get(rentDto.getCustomerDto().getNic());
 
@@ -37,12 +40,27 @@ public class RentServiceImpl implements RentService {
         rent.setCar(car);
         rent.setCustomer(customer);
 
+        setIsRented(car.getId(), true);
 
-        return rentDao.save(rent);
+        if (existingRent==null){
+
+            boolean isSaved=rentDao.save(rent);
+
+            return isSaved?true:false;
+        }else {
+            boolean isUpdated=rentDao.update(rent);
+
+            return isUpdated?true:false;
+        }
+
     }
 
     @Override
-    public boolean deleteRent(Long id) throws Exception {
+    public boolean deleteRent(String id) throws Exception {
+        RentDto rentDto=getRentById(id);
+        Car car=carDao.get(rentDto.getCarDto().getId());
+
+        setIsRented(car.getId(), false);
         return rentDao.delete(id);
     }
 
@@ -55,7 +73,7 @@ public class RentServiceImpl implements RentService {
             Car car=carDao.get(rent.getCar().getId());
 
             CarDto carDto=new CarDto(car.getId(), car.getVehicleNumber(), car.getMake(), car.getColor(), car.getSeats(),
-                    car.getYom(), car.getPricePerDay(), car.getMinDeposit(), car.getMaxKmPerDay(), car.getRemarks(), car.getCategory().getName());
+                    car.getYom(), car.getPricePerDay(), car.getMinDeposit(), car.getMaxKmPerDay(), car.isRented(), car.getRemarks(), car.getCategory().getName());
 
             Customer customer=customerDao.get(rent.getCustomer().getNic());
 
@@ -65,7 +83,7 @@ public class RentServiceImpl implements RentService {
 
 
             return new RentDto(rent.getId(), rent.getFromDate(),rent.getToDate(),rent.getTotal(),rent.isReturn(),
-                    rent.getBalance(), rent.getRefundableDeposit(), rent.getAdvancedPayment(), rent.getPerDayRent(),carDto,customerDto);
+                    rent.getBalance(), rent.getRefundableDeposit(), rent.getAdvancedPayment(), rent.getPerDayRent(),rent.getOverdueAmt(),carDto,customerDto);
         }
 
         return null;
@@ -73,6 +91,56 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public List<RentDto> getAllRents() throws Exception {
-        return null;
+        try {
+            List<Rent>rentList=rentDao.getRents();
+            List<RentDto>dtoList=new ArrayList<>();
+
+            for (Rent r:rentList) {
+                Customer customer =r.getCustomer();
+                CustomerDto customerDto = new CustomerDto(customer.getNic(), customer.getFstname(), customer.getLstname(), customer.getDob(),  customer.getAddressPerm(),
+                        customer.getAddressPost(), customer.getPostalCode(), customer.getCity(), customer.getCountry(), customer.getProvince(), customer.getCnumber(), customer.getEmail(),
+                        customer.getSalary(), customer.getGender());
+
+                Car car=r.getCar();
+                CarDto carDto=new CarDto(car.getId(), car.getVehicleNumber(), car.getMake(), car.getColor(), car.getSeats(), car.getYom(),
+                        car.getPricePerDay(), car.getMinDeposit(), car.getMaxKmPerDay(), car.isRented(), car.getRemarks(), car.getCategory().getName());
+
+
+                dtoList.add(new RentDto(r.getId(),r.getFromDate(),r.getToDate(),r.getTotal(),r.isReturn(),r.getBalance(),
+                        r.getRefundableDeposit(),r.getAdvancedPayment(),r.getPerDayRent(),r.getOverdueAmt(),carDto,customerDto));
+
+            }
+
+            return dtoList;
+
+        }catch (Exception e){
+            throw e;
+        }
     }
+
+    public boolean setIsRented(String id,boolean value){
+        return carDao.setIsRented(id,value);
+
+    }
+
+    @Override
+    public boolean setIsReturn(String id, boolean value) {
+
+        return rentDao.setIsReturn(id,value);
+    }
+
+    @Override
+    public LocalDate getLastUpdateDate(String id) {
+        return rentDao.getLastUpdatedDate(id);
+    }
+    @Override
+    public LocalDate getCreatedDate(String id) {
+        return rentDao.getCreatedDate(id);
+    }
+
+    @Override
+    public boolean setOverdueAmt(double overdueAmt,String id) {
+        return rentDao.setOverdueAmt(overdueAmt,id);
+    }
+
 }

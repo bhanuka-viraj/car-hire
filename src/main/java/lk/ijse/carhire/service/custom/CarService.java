@@ -14,4 +14,6 @@ public interface CarService extends SuperService {
     public List<CarDto> getAllCars() throws Exception;
 
     public boolean deleteCar(String id)throws Exception;
+
+
 }

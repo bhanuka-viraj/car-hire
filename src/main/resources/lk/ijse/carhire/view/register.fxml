@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="rootnode" prefHeight="380.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.RegisterUserController">
+   <children>
+      <ImageView fitHeight="380.0" fitWidth="620.0">
+         <image>
+            <Image url="@images/background_2.jpg" />
+         </image>
+      </ImageView>
+      <Region layoutX="21.0" layoutY="50.0" opacity="0.59" prefHeight="320.0" prefWidth="581.0" style="-fx-background-color: #000;" />
+      <Label layoutX="197.0" layoutY="20.0" text="User Registration Form" textFill="#f0932b">
+         <font>
+            <Font name="Consolas Bold" size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtFirstName" layoutX="47.0" layoutY="88.0" prefHeight="27.0" prefWidth="214.0" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
+      <TextField fx:id="txtLastName" layoutX="366.0" layoutY="88.0" prefHeight="27.0" prefWidth="214.0" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
+      <TextField fx:id="txtCNumber" layoutX="47.0" layoutY="163.0" prefHeight="27.0" prefWidth="214.0" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
+      <TextField fx:id="txtUserName" layoutX="366.0" layoutY="163.0" prefHeight="27.0" prefWidth="214.0" promptText="Ex-: bhanukaviraj14" style="-fx-background-color: none; -fx-border-color: transparent transparent #fff transparent; -fx-background-insets: 0, 0, 1, 0; -fx-text-fill: #fff; -fx-alignment: center;" />
+      <PasswordField fx:id="txtPassword" layoutX="47.0" layoutY="256.0" prefHeight="25.0" prefWidth="240.0" style="-fx-background-color: none; -fx-alignment: center; -fx-background-insets: 0, 0, 1, 0; -fx-border-color: transparent transparent #fff transparent; -fx-text-fill: #fff;" />
+      <PasswordField fx:id="txtPasswordAgain" layoutX="366.0" layoutY="256.0" prefHeight="27.0" prefWidth="214.0" style="-fx-background-color: none; -fx-alignment: center; -fx-background-insets: 0, 0, 1, 0; -fx-border-color: transparent transparent #fff transparent; -fx-text-fill: #fff;" />
+      <Label layoutX="54.0" layoutY="226.0" text="Enter a unique password" textFill="WHITE" />
+      <Label layoutX="373.0" layoutY="226.0" text="Enter password again" textFill="WHITE" />
+      <Label layoutX="368.0" layoutY="138.0" text="Enter a unique username" textFill="WHITE" />
+      <Label layoutX="54.0" layoutY="138.0" text="Contact No" textFill="WHITE" />
+      <Label layoutX="54.0" layoutY="65.0" text="First name" textFill="WHITE" />
+      <Label layoutX="373.0" layoutY="65.0" text="Last name" textFill="WHITE" />
+      <Button layoutX="229.0" layoutY="325.0" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="29.0" prefWidth="165.0" style="-fx-background-color: #6ab04c; -fx-background-radius: 25;" text="Register" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="523.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="29.0" prefWidth="79.0" style="-fx-background-color: #0984e3; -fx-background-radius: 25;" text="Login" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

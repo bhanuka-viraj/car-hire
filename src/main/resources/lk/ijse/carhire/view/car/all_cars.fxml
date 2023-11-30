@@ -18,19 +18,28 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootnode" prefHeight="344.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.car.AllCarsController">
+<AnchorPane fx:id="rootnode" prefHeight="374.0" prefWidth="705.0" style="-fx-background-color: none;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.carhire.controller.car.AllCarsController">
    <children>
-      <TableView fx:id="tblCars" prefHeight="345.0" prefWidth="705.0">
+      <TableView fx:id="tblCars" layoutY="29.0" onMouseClicked="#tblCarsOnClick" prefHeight="345.0" prefWidth="725.0">
          <columns>
             <TableColumn fx:id="colId" editable="false" prefWidth="52.0" text="Id" />
             <TableColumn fx:id="colMake" editable="false" prefWidth="113.0" text="Make" />
             <TableColumn fx:id="colCategory" editable="false" prefWidth="84.0" text="Category" />
             <TableColumn fx:id="colAvailability" editable="false" text="Availability" />
             <TableColumn fx:id="colRentPerDay" editable="false" prefWidth="95.0" text="Rent per day" />
-            <TableColumn fx:id="colRent" editable="false" prefWidth="146.0" text="Remarks" />
-            <TableColumn fx:id="colDelete" editable="false" minWidth="0.0" prefWidth="71.0" text="Delete" />
-            <TableColumn fx:id="colRemarks" editable="false" prefWidth="63.0" text="Rent" />
+            <TableColumn fx:id="colRemarks" editable="false" prefWidth="146.0" text="Remarks" />
+            <TableColumn fx:id="colDelete" editable="false" minWidth="0.0" prefWidth="76.0" text="Delete" />
+            <TableColumn fx:id="colRent" editable="false" prefWidth="78.0" text="Rent" />
          </columns>
       </TableView>
+      <Button layoutX="653.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnReloadOnAction" prefHeight="25.0" prefWidth="0.0" style="-fx-background-color: #000;">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="16.0">
+               <image>
+                  <Image url="@../icons/reload.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
