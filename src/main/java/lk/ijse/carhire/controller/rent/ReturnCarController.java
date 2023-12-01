@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import lk.ijse.carhire.controller.DashboardController;
 import lk.ijse.carhire.dto.CustomerDto;
 import lk.ijse.carhire.dto.RentDto;
 import lk.ijse.carhire.service.ServiceFactory;
@@ -87,6 +88,7 @@ public class ReturnCarController {
     void btnReturnOnAction(ActionEvent event) {
 
         try {
+
                 boolean setRented=rentService.setIsRented(rentDto.getCarDto().getId(),false);
                 boolean setReturned=rentService.setIsReturn(rentDto.getId(),true);
                 if(overdueDays>0){
@@ -94,6 +96,7 @@ public class ReturnCarController {
                 }
 
                 if(setReturned && setRented){
+                    setDashboardDetails();
                     new Alert(Alert.AlertType.CONFIRMATION,"Rent returned successfully !").show();
                 }else{
                     new Alert(Alert.AlertType.WARNING,"Error occurred while returning !").show();
@@ -107,4 +110,19 @@ public class ReturnCarController {
         }
     }
 
+    public void setDashboardDetails(){
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/carhire/view/dashboard.fxml"));
+            Parent root = loader.load();
+            DashboardController dashboardController =loader.getController();
+
+            dashboardController.setDetails();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
+    }
 }

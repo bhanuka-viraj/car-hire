@@ -77,9 +77,14 @@ public class CustomerServiceImpl implements CustomerService {
         try {
 
             Customer c = dao.get(nic);
-            return new CustomerDto(c.getNic(), c.getFstname(), c.getLstname(), c.getDob(), c.getAddressPerm(), c.getAddressPost(),
-                    c.getPostalCode(), c.getCity(), c.getCountry(), c.getProvince(), c.getCnumber(),
-                    c.getEmail(), c.getSalary(), c.getGender());
+            if (c!=null){
+                return new CustomerDto(c.getNic(), c.getFstname(), c.getLstname(), c.getDob(), c.getAddressPerm(), c.getAddressPost(),
+                        c.getPostalCode(), c.getCity(), c.getCountry(), c.getProvince(), c.getCnumber(),
+                        c.getEmail(), c.getSalary(), c.getGender());
+            }else {
+                return null;
+            }
+
 
         } catch (Exception e) {
             throw e;

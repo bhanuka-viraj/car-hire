@@ -86,7 +86,12 @@
 
                     transaction.commit();
 
-                    return customer;
+                    if (customer!=null){
+                        return customer;
+                    }else {
+                        return null;
+                    }
+
                 } catch (Exception e) {
                     throw e;
                 }

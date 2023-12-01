@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import lk.ijse.carhire.controller.DashboardController;
 import lk.ijse.carhire.dto.CarDto;
 import lk.ijse.carhire.dto.CustomerDto;
 import lk.ijse.carhire.dto.RentDto;
@@ -169,6 +170,7 @@ public class RentCarController {
                 boolean isSaved=rentService.saveRent(rentDto);
 
                 if(isSaved){
+                    setDashboardDetails();
                     new Alert(Alert.AlertType.CONFIRMATION,"Rent saved successfully !").show();
                 }else{
                     new Alert(Alert.AlertType.WARNING,"Rent cannot be saved !").show();
@@ -212,6 +214,7 @@ public class RentCarController {
                 if (!rentDto.getCarDto().getId().equals(carDto.getId())){
                     rentService.setIsRented(rentDto.getCarDto().getId(),false);
                 }
+                setDashboardDetails();
                 new Alert(Alert.AlertType.CONFIRMATION,"Rent saved successfully !").show();
             }else{
                 new Alert(Alert.AlertType.WARNING,"Rent cannot be saved !").show();
@@ -496,6 +499,22 @@ public class RentCarController {
 
     public double overdue(){
         return rentDto.getPerDayRent()*daysFromReturnDate();
+    }
+
+    public void setDashboardDetails(){
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/carhire/view/dashboard.fxml"));
+            Parent root = loader.load();
+            DashboardController dashboardController =loader.getController();
+
+            dashboardController.setDetails();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
     }
 
 }

@@ -14,11 +14,20 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.carhire.dto.CarDto;
+import lk.ijse.carhire.dto.CustomerDto;
+import lk.ijse.carhire.dto.RentDto;
+import lk.ijse.carhire.service.ServiceFactory;
+import lk.ijse.carhire.service.ServiceType;
+import lk.ijse.carhire.service.custom.CarService;
+import lk.ijse.carhire.service.custom.CustomerService;
+import lk.ijse.carhire.service.custom.RentService;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class DashboardController {
     @FXML
@@ -53,6 +62,10 @@ public class DashboardController {
     @FXML
     private Label lblTotalCustomers;
 
+    private CustomerService customerService= ServiceFactory.getService(ServiceType.CUSTOMER);
+    private CarService carService=ServiceFactory.getService(ServiceType.CAR);
+    private RentService rentService=ServiceFactory.getService(ServiceType.RENT);
+
     public void initialize(){
         try {
             lblTblHead.setText("Rents");
@@ -60,6 +73,7 @@ public class DashboardController {
 
             setdate();
             setTime();
+            setDetails();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -188,6 +202,45 @@ public class DashboardController {
         LocalDate currentDate = LocalDate.now();
         String formattedDate = currentDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         lblDate.setText(formattedDate);
+    }
+
+    public void setDetails(){
+        try{
+            int customerCount=0;
+            int carCount=0;
+            int rentCount=0;
+            double totalEarnings=0;
+            int unrentedCars=0;
+
+            List<CustomerDto>customers=customerService.getAllCustomers();
+            List<CarDto>cars=carService.getAllCars();
+            List<RentDto>rents=rentService.getAllRents();
+
+            for (CustomerDto c:customers) {
+                customerCount++;
+            }
+            for (CarDto c:cars) {
+                if (!c.isRented()){
+                    unrentedCars++;
+                }
+                carCount++;
+            }
+            for (RentDto r:rents) {
+                double earnings=r.getTotal()-r.getRefundableDeposit();
+                totalEarnings+=earnings;
+                rentCount++;
+            }
+
+            lblUnrentedCars.setText(String.valueOf(unrentedCars));
+            lblEarnings.setText(String.valueOf(totalEarnings));
+            lblTotalCustomers.setText(String.valueOf(customerCount));
+            lblTotalCars.setText(String.valueOf(carCount));
+            lblTotalRents.setText(String.valueOf(rentCount));
+
+        }catch (Exception e){
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            e.printStackTrace();
+        }
     }
 
 }
